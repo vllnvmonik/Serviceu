@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="UseCompoundDrawables">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/profileround"
+        android:backgroundTint="#b3d8f5"
+        android:contentDescription="@string/todo"
+        app:srcCompat="@drawable/baseline_person_outline_24"
+        tools:ignore="ImageContrastCheck"
+        tools:srcCompat="@drawable/sampleprofile" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/fredokasemibold"
+        android:text="@string/fullname"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/roundbuttonslim"
+        android:backgroundTint="#4A62829B"
+        android:fontFamily="@font/fredokaregular"
+        android:padding="15dp"
+        android:text="@string/email"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        tools:ignore="RtlCompat"
+        app:drawableLeftCompat="@drawable/baseline_mail_outline_24" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/roundbuttonslim"
+        android:backgroundTint="#4A62829B"
+        android:fontFamily="@font/fredokaregular"
+        android:padding="15dp"
+        android:text="@string/phonenumber"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        tools:ignore="RtlCompat"
+        app:drawableLeftCompat="@drawable/baseline_phone_24" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/roundbuttonslim"
+        android:backgroundTint="#4A62829B"
+        android:fontFamily="@font/fredokaregular"
+        android:padding="30dp"
+        android:text="@string/address"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        tools:ignore="RtlCompat"
+        app:drawableLeftCompat="@drawable/baseline_location_on_24" />
+
+    <Button
+        android:id="@+id/logoutBtn"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/roundbuttonslim"
+        android:backgroundTint="#CC8B7F"
+        android:text="@string/logout" />
+
+</LinearLayout>
