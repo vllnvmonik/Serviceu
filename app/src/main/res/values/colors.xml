@@ -5,5 +5,8 @@
     <color name="gray">#4A4892CC</color>
     <color name="grayblue">#4A066BBA</color>
     <color name="faintblue">#4A62829B</color>
+    <color name= "faintred">#CC8B7F</color>
+    <color name= "blue">#4B93F7</color>
+    <color name= "lightblue">#75AAC5DA</color>
 
 </resources>

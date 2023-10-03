@@ -33,12 +33,12 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="300dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:background="@drawable/roundbuttonslim"
-        android:backgroundTint="#4A62829B"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="@color/lightblue"
         android:fontFamily="@font/fredokaregular"
         android:padding="15dp"
         android:text="@string/email"
@@ -50,15 +50,15 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="300dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:background="@drawable/roundbuttonslim"
-        android:backgroundTint="#4A62829B"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="@color/lightblue"
         android:fontFamily="@font/fredokaregular"
         android:padding="15dp"
-        android:text="@string/phonenumber"
+        android:text="@string/phonenumberHint"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="15sp"
@@ -67,29 +67,31 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="300dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:background="@drawable/roundbuttonslim"
-        android:backgroundTint="#4A62829B"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="@color/lightblue"
         android:fontFamily="@font/fredokaregular"
-        android:padding="30dp"
-        android:text="@string/address"
+        android:padding="15dp"
+        android:text="@string/addressHint"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="15sp"
-        tools:ignore="RtlCompat"
-        app:drawableLeftCompat="@drawable/baseline_location_on_24" />
+        app:drawableLeftCompat="@drawable/baseline_location_on_24"
+        tools:ignore="RtlCompat" />
 
     <Button
         android:id="@+id/logoutBtn"
-        android:layout_width="150dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/roundbuttonslim"
-        android:backgroundTint="#CC8B7F"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/fredokasemibold"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="@color/faintred"
+        android:textColor="@color/white"
         android:text="@string/logout" />
 
 </LinearLayout>
