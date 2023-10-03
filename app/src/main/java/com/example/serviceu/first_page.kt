@@ -20,4 +20,4 @@ class first_page : AppCompatActivity() {
 
         }
     }
-    }
+}
