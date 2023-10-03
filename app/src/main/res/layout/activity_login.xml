@@ -7,6 +7,13 @@
     android:background="@color/white"
     tools:context=".Login">
 
+    <ImageView
+        android:id="@+id/back_button"
+        android:layout_width="42dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="35dp"
+        app:srcCompat="@drawable/baseline_arrow_back_24" />
 
     <TextView
         android:id="@+id/login"
@@ -75,7 +82,6 @@
         android:background="@drawable/roundstyle"
         android:text="Login"
         app:backgroundTint="#41527E" />
-
 
 
 
