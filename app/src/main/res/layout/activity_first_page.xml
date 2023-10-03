@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.786"
         app:srcCompat="@drawable/logo1"
-        tools:ignore="MissingConstraints" />
+       />
 
     <Button
         android:id="@+id/bt_login"
@@ -32,7 +32,7 @@
         android:textColor="@color/white"
         android:fontFamily="@font/fredokasemibold"
         android:padding="10dp"
-        android:text="Login"
+        android:text="@string/login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +54,7 @@
         android:backgroundTint="@color/blue"
         android:fontFamily="@font/fredokasemibold"
         android:padding="10dp"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_login"

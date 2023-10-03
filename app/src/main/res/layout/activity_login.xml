@@ -13,7 +13,8 @@
         android:layout_height="43dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="35dp"
-        app:srcCompat="@drawable/baseline_arrow_back_24" />
+        app:srcCompat="@drawable/baseline_arrow_back_24"
+        android:contentDescription="TODO" />
 
     <TextView
         android:id="@+id/login"
@@ -22,10 +23,9 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="200dp"
         android:fontFamily="@font/fredokasemibold"
-        android:gravity="left"
-        android:text="Login"
+        android:text="@string/login"
         android:textColor="@color/black"
-        android:textSize="35dp" />
+        android:textSize="35sp" />
 
     <EditText
 
@@ -44,7 +44,8 @@
         android:inputType="textEmailAddress"
         android:padding="15dp"
         android:textColor="@color/black"
-        android:textColorHint="@color/black" />
+        android:textColorHint="@color/black"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/password"
@@ -61,7 +62,8 @@
         android:inputType="textPassword"
         android:padding="15dp"
         android:textColor="@color/black"
-        android:textColorHint="@color/black" />
+        android:textColorHint="@color/black"
+        android:autofillHints="" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/loginbtn"
@@ -80,7 +82,7 @@
         android:background="@drawable/roundstyle"
         android:backgroundTint="@color/blue"
         android:text="@string/login"
-        app:backgroundTint="#41527E" />
+        app:backgroundTint="@color/blue" />
 
 
 
