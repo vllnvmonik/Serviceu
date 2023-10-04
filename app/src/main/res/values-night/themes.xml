@@ -3,5 +3,7 @@
     <style name="Base.Theme.Serviceu" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:statusBarColor">@color/blue</item>
+
     </style>
 </resources>
