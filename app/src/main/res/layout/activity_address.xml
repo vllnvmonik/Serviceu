@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    android:layout_gravity="center"
+    tools:context=".address">
+
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/back_arrow" />
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="353dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="25dp"
+        android:fontFamily="@font/fredokasemibold"
+        android:text="Address"
+        android:textAlignment="center"
+        android:textSize="28sp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="1dp" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/fredokaregular"
+        android:text="Name"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="93dp" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:background="@drawable/roundsquare"
+        android:fontFamily="@font/fredokasemibold"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        tools:ignore="DuplicateIds,MissingConstraints"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="129dp" />
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/fredokaregular"
+        android:text="Address"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        tools:ignore="DuplicateIds,MissingConstraints"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="196dp" />
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/roundsquare"
+        android:fontFamily="@font/fredokasemibold"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="20sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="229dp" />
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date and Time"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/tv_TextTime"
+        android:layout_width="348dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/roundsquare"
+        android:fontFamily="@font/fredokaregular"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="#FBFBFB"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btn_datetimePicker"
+        android:layout_width="257dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/roundsquare"
+        android:fontFamily="@font/fredokaregular"
+        android:hint="Select Date and Time"
+        android:textColor="@color/black"
+        android:textColorHint="#000000"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/bt_button"
+        android:layout_width="248dp"
+        android:layout_height="58dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/roundsquare"
+        android:fontFamily="@font/fredokasemibold"
+        android:text="Proceed"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="80dp"
+        tools:layout_editor_absoluteY="619dp" />
+
+
+</LinearLayout>
