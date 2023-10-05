@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Handler().postDelayed({startActivity(Intent(this, first_page::class.java))
+        Handler().postDelayed({startActivity(Intent(this, LoginSignUp::class.java))
             finish()
         },2000)
     }

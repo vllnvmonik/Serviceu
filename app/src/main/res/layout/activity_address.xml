@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".address">
+    tools:context=".Address">
 
     <ImageView
         android:id="@+id/back_button"
@@ -107,33 +107,32 @@
         android:textColorHint="#FBFBFB"
         android:textSize="20sp" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_datetimePicker"
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:background="@drawable/roundsquare"
-        android:fontFamily="@font/fredokaregular"
-        android:hint="Select Date and Time"
-        android:textColor="@color/black"
-        android:textColorHint="#000000"
-        android:textSize="20sp" />
+        android:background="@drawable/roundstyle"
+        android:fontFamily="@font/fredokasemibold"
+        android:backgroundTint="@color/blue"
+        android:text="Select Date and Time"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bt_button"
         android:layout_width="248dp"
         android:layout_height="58dp"
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
-        android:background="@drawable/roundsquare"
+        android:background="@drawable/roundstyle"
         android:fontFamily="@font/fredokasemibold"
+        android:backgroundTint="@color/blue"
         android:text="Proceed"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="20sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="619dp" />
+        />
 
 
 </LinearLayout>

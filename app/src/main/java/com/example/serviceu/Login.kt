@@ -9,18 +9,18 @@ import android.widget.ImageView
 
 class Login : AppCompatActivity() {
 
-    private lateinit var imageView: ImageView
+    private lateinit var backButton: ImageView
     private lateinit var loginBtn: Button
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        imageView = findViewById(R.id.back_button)
+        backButton = findViewById(R.id.back_button)
         loginBtn = findViewById(R.id.loginBtn)
 
-        imageView.setOnClickListener{
-            val intent = Intent(this, first_page::class.java)
+        backButton.setOnClickListener{
+            val intent = Intent(this, LoginSignUp::class.java)
             startActivity(intent)
         }
 

@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
-class first_page : AppCompatActivity() {
+class LoginSignUp : AppCompatActivity() {
 
     private lateinit var loginButton: Button
     private lateinit var signUpButton: Button
@@ -21,6 +21,10 @@ class first_page : AppCompatActivity() {
         loginButton.setOnClickListener {
             val intent = Intent(this, Login::class.java)
             startActivity(intent)
+        }
+        signUpButton.setOnClickListener {
+//            val intent = Intent(this, address::class.java)
+//            startActivity(intent)
         }
     }
 }

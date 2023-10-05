@@ -6,12 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.DatePicker
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.TimePicker
-import java.time.Year
 import java.util.Calendar
 
-class address : AppCompatActivity(),DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
+class Address : AppCompatActivity(),DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     var day = 0
     var month = 0
@@ -26,16 +26,23 @@ class address : AppCompatActivity(),DatePickerDialog.OnDateSetListener, TimePick
     var savedMinute = 0
 
     private lateinit var btn_datetimePicker: Button
-
     private lateinit var tv_TextTime: TextView
+    private lateinit var backButton: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_address)
 
         btn_datetimePicker = findViewById(R.id.btn_datetimePicker)
         tv_TextTime = findViewById(R.id.tv_TextTime)
+        backButton = findViewById(R.id.back_button)
+
+        backButton.setOnClickListener {
+//            val intent = Intent(this, first_page::class.java)
+//            startActivity(intent)
+        }
         pickDate()
     }
+
 
     private fun getDateTimeCalendar() {
         val calendar = Calendar.getInstance()
