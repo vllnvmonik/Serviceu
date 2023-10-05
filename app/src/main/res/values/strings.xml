@@ -3,11 +3,13 @@
     <string name="todo"></string>
     <string name="fullname">ABCD EFGHIJK</string>
     <string name="email">qwerty@gmail.com</string>
-    <string name= "emailHint">Email</string>
+    <string name="emailHint">Email</string>
     <string name="phonenumberHint">000-000-0000-000</string>
     <string name="addressHint">Address</string>
     <string name="logout">Logout</string>
     <string name="passwordHint">Password</string>
     <string name="login">Login</string>
     <string name="sign_up">Sign Up</string>
-</resources>
+    <string name="bookings">Bookings</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string></resources>
