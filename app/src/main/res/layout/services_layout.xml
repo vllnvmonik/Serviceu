@@ -38,7 +38,7 @@
             android:fontFamily="@font/fredokasemibold"
             android:text="LAUNDRY"
             android:textColor="@color/black"
-            android:textSize="25dp"
+            android:textSize="20dp"
             >
 
         </TextView>

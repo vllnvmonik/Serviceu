@@ -82,7 +82,7 @@
         app:drawableLeftCompat="@drawable/baseline_location_on_24"
         tools:ignore="RtlCompat" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/logoutBtn"
         android:layout_width="300dp"
         android:layout_height="50dp"

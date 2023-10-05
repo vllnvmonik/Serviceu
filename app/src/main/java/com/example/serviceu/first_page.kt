@@ -7,17 +7,20 @@ import android.widget.Button
 
 class first_page : AppCompatActivity() {
 
-    private lateinit var button: Button
+    private lateinit var loginButton: Button
+    private lateinit var signUpButton: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_first_page)
 
-        button = findViewById(R.id.bt_login)
+        loginButton = findViewById(R.id.bt_login)
+        signUpButton = findViewById(R.id.bt_sign_up)
 
-        button.setOnClickListener {
+
+        loginButton.setOnClickListener {
             val intent = Intent(this, Login::class.java)
             startActivity(intent)
-
         }
     }
 }

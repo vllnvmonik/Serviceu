@@ -36,6 +36,7 @@ class address : AppCompatActivity(),DatePickerDialog.OnDateSetListener, TimePick
         tv_TextTime = findViewById(R.id.tv_TextTime)
         pickDate()
     }
+
     private fun getDateTimeCalendar() {
         val calendar = Calendar.getInstance()
         day = calendar.get(Calendar.DAY_OF_MONTH)
@@ -49,9 +50,10 @@ class address : AppCompatActivity(),DatePickerDialog.OnDateSetListener, TimePick
         btn_datetimePicker.setOnClickListener {
 
             getDateTimeCalendar()
-            DatePickerDialog(this, this,year,month,day).show()
+            DatePickerDialog(this, this, year, month, day).show()
         }
     }
+
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         savedDay = dayOfMonth
         savedMonth = month
@@ -65,7 +67,8 @@ class address : AppCompatActivity(),DatePickerDialog.OnDateSetListener, TimePick
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
         savedHour = hourOfDay
         savedMinute = minute
-        
-        tv_TextTime.text = "$savedDay-$savedMonth-$savedYear\n Hour: $savedHour Minute: $savedMinute"
+
+        tv_TextTime.text =
+            "$savedDay-$savedMonth-$savedYear\n Hour: $savedHour Minute: $savedMinute"
     }
 }
