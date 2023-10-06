@@ -23,6 +23,8 @@ class LoginSignUp : AppCompatActivity() {
             startActivity(intent)
         }
         signUpButton.setOnClickListener {
+            val intent = Intent(this, CreateAccount::class.java)
+            startActivity(intent)
         }
 
 
