@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="200dp"
+    android:layout_gravity="center"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/fredokasemibold"
+            android:text="@string/confirm_logout"
+            android:textSize="24sp"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/fredokaregular"
+            android:text="@string/are_you_sure_you_want_to_logout"
+            android:textSize="18sp"
+
+            tools:ignore="TextSizeCheck" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cancel_button"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/roundstyle"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/fredokasemibold"
+                android:text="@string/cancel"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+
+                />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/confirm_button"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/roundstyle"
+                android:backgroundTint="@color/faintred"
+                android:fontFamily="@font/fredokasemibold"
+                android:text="@string/confirm"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+
+                tools:ignore="TextContrastCheck" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

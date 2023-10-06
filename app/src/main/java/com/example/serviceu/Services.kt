@@ -12,13 +12,13 @@ class Services : AppCompatActivity() {
     private lateinit var servicesList: ArrayList<ServicesClass>
     private lateinit var imageList: Array <Int>
     private lateinit var titleList: Array <String>
-    private lateinit var BottomNavigationView: BottomNavigationView
+    private lateinit var bottomNav: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_services)
 
-        BottomNavigationView = findViewById(R.id.navmenu)
-        BottomNavigationView.setOnItemSelectedListener {
+        bottomNav = findViewById(R.id.navmenu)
+        bottomNav.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.home -> {
                     val intent = Intent(this, Services::class.java)

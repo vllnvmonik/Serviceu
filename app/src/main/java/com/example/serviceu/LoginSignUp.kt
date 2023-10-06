@@ -1,9 +1,9 @@
 package com.example.serviceu
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 
 class LoginSignUp : AppCompatActivity() {
 
@@ -12,7 +12,7 @@ class LoginSignUp : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_first_page)
+        setContentView(R.layout.activity_login_signup)
 
         loginButton = findViewById(R.id.bt_login)
         signUpButton = findViewById(R.id.bt_sign_up)
@@ -23,8 +23,10 @@ class LoginSignUp : AppCompatActivity() {
             startActivity(intent)
         }
         signUpButton.setOnClickListener {
-//            val intent = Intent(this, address::class.java)
-//            startActivity(intent)
         }
+
+
     }
+
+
 }

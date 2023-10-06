@@ -12,4 +12,9 @@
     <string name="sign_up">Sign Up</string>
     <string name="bookings">Bookings</string>
     <string name="home">Home</string>
-    <string name="profile">Profile</string></resources>
+    <string name="profile">Profile</string>
+    <string name="confirm_logout">CONFIRM LOGOUT</string>
+    <string name="are_you_sure_you_want_to_logout">Are you sure you want to logout?</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+</resources>
