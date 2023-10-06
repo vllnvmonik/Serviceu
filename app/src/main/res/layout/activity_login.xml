@@ -65,7 +65,7 @@
         android:textColorHint="@color/black"
         android:autofillHints="" />
 
-    <com.google.android.material.button.MaterialButton
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/loginBtn"
         android:layout_width="300dp"
         android:layout_height="50dp"

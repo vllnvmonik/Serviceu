@@ -2,20 +2,19 @@ package com.example.serviceu
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.view.isEmpty
-
+import androidx.appcompat.app.AppCompatActivity
 
 
 class CreateAccount : AppCompatActivity() {
@@ -34,8 +33,8 @@ class CreateAccount : AppCompatActivity() {
     private lateinit var categorySpinner: Spinner
     private lateinit var radioCustomer: RadioButton
     private lateinit var radioProvider: RadioButton
-    private lateinit var backButton : Button
-    private lateinit var loginButton : Button
+    private lateinit var backButton : ImageView
+    private lateinit var loginButton : TextView
     private lateinit var createAccountButton : Button
 
 
@@ -51,7 +50,7 @@ class CreateAccount : AppCompatActivity() {
         homeAddress = findViewById(R.id.et_City)
         btCreate = findViewById(R.id.bt_createAccount)
         radioGroup = findViewById(R.id.rb_Gender)
-        radioGroupOne = findViewById(R.id.rb_Rule)
+        radioGroupOne = findViewById(R.id.rb_role)
         password = findViewById(R.id.et_password)
         confirmPassword = findViewById(R.id.et_confirmPassword)
         category = findViewById(R.id.tv_category)
@@ -98,12 +97,12 @@ class CreateAccount : AppCompatActivity() {
 
 
             if (selectedRbGender != -1) {
-                val selectedRdOne = findViewById<RadioGroup>(selectedRbGender)
+//                val selectedRdOne = findViewById<RadioGroup>(selectedRbGender)
                 selectedGender = selectedRbGender.toString()
             }
 
             if (selectedRb != -1) {
-                val selectedRbTwo = findViewById<RadioGroup>(selectedRb)
+//                val selectedRbTwo = findViewById<RadioGroup>(selectedRb)
                 selected = selected.toString()
             }
 
@@ -184,9 +183,11 @@ class CreateAccount : AppCompatActivity() {
         radioGroupOne.setOnCheckedChangeListener { _, checkedId ->
 
             if (checkedId == R.id.rb_customer) {
-                categorySpinner.visibility = View.GONE
+                categorySpinner.visibility = View.INVISIBLE
+                category.visibility = View.INVISIBLE
             } else if (checkedId == R.id.rb_serviceProvider) {
                 categorySpinner.visibility = View.VISIBLE
+                category.visibility = View.VISIBLE
             }
         }
 
