@@ -7,18 +7,25 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Window
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class Profile : AppCompatActivity() {
     private lateinit var logoutBtn: Button
+    private lateinit var backButton: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
         logoutBtn = findViewById(R.id.logout_btn)
+        backButton = findViewById(R.id.back_button)
 
+        backButton.setOnClickListener {
+            val intent = Intent(this, Services::class.java)
+            startActivity(intent)
+        }
 
         logoutBtn.setOnClickListener {
             logOutDialog()

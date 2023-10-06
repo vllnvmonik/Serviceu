@@ -8,11 +8,20 @@
     tools:ignore="UseCompoundDrawables">
 
     <ImageView
+        android:id="@+id/back_button"
+        android:layout_width="42dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="35dp"
+        app:srcCompat="@drawable/baseline_arrow_back_24"
+        android:contentDescription="TODO" />
+
+    <ImageView
         android:id="@+id/imageView"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_gravity="center"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/profileround"
         android:backgroundTint="#b3d8f5"
         android:contentDescription="@string/todo"
