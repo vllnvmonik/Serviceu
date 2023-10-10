@@ -10,24 +10,21 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
+
         <ImageView
             android:id="@+id/back_button"
             android:layout_width="70dp"
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="230dp"
-            android:src="@drawable/baseline_arrow_back_24"
-
-            />
+            android:src="@drawable/baseline_arrow_back_24" />
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            app:srcCompat="@drawable/logo"
-            />
+            app:srcCompat="@drawable/logo" />
 
     </LinearLayout>
 
@@ -41,8 +38,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginStart="30dp"
         android:textColor="@color/black"
-        android:textSize="24sp"
-        />
+        android:textSize="24sp" />
 
 
     <LinearLayout
@@ -50,8 +46,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
-        android:layout_gravity="center"
-        >
+        android:layout_gravity="center">
         <EditText
             android:id="@+id/et_firstname"
             android:layout_width="175dp"
@@ -65,8 +60,8 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:textColorHint="@color/black"
-            android:textSize="16sp"
-            />
+            android:textSize="16sp" />
+
         <EditText
             android:id="@+id/et_lastname"
             android:layout_width="175dp"
@@ -79,8 +74,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:textColorHint="@color/black"
-            android:textSize="16sp"
-            />
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -98,17 +92,14 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:textColorHint="@color/black"
-        android:textSize="16sp"
-        />
+        android:textSize="16sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
-        android:layout_gravity="center"
-
-        >
+        android:layout_gravity="center">
 
         <TextView
             android:id="@+id/tv_number"
@@ -134,8 +125,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:textColorHint="@color/black"
-            android:textSize="16sp"
-            />
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -157,8 +147,7 @@
             android:layout_marginRight="50dp"
             android:fontFamily="@font/fredokaregular"
             android:text="Male"
-            android:textSize="16sp"
-            />
+            android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/rb_female"
@@ -168,8 +157,7 @@
             android:layout_marginLeft="40dp"
             android:fontFamily="@font/fredokaregular"
             android:text="Female"
-            android:textSize="16sp"
-            />
+            android:textSize="16sp"/>
     </RadioGroup>
 
     <EditText
@@ -186,8 +174,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:textColorHint="@color/black"
-        android:textSize="16sp"
-        />
+        android:textSize="16sp" />
 
     <RadioGroup
         android:id="@+id/rb_role"
@@ -198,8 +185,7 @@
         android:backgroundTint="@color/lightblue"
         android:gravity="center"
         android:layout_gravity="center"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
         <RadioButton
             android:id="@+id/rb_customer"
@@ -218,8 +204,7 @@
             android:layout_gravity="center"
             android:fontFamily="@font/fredokaregular"
             android:text="Service Provider"
-            android:textSize="16sp"
-            />
+            android:textSize="16sp" />
 
     </RadioGroup>
 
@@ -228,8 +213,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
-        android:gravity="center"
-        >
+        android:gravity="center">
 
         <EditText
             android:id="@+id/et_password"
@@ -245,8 +229,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:textColorHint="@color/black"
-            android:textSize="16sp"
-            />
+            android:textSize="16sp" />
 
 
         <EditText
@@ -269,8 +252,7 @@
         android:layout_height="50dp"
         android:orientation="horizontal"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        >
+        android:layout_marginTop="10dp">
 
         <TextView
             android:id="@+id/tv_category"
@@ -319,7 +301,7 @@
             android:id="@+id/tv_haveAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="80dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"
             android:fontFamily="@font/fredokaregular"
