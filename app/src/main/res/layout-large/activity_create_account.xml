@@ -16,8 +16,9 @@
             android:id="@+id/back_button"
             android:layout_width="70dp"
             android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="230dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginEnd="220dp"
             android:src="@drawable/baseline_arrow_back_24"
 
             />
@@ -26,6 +27,7 @@
             android:id="@+id/imageView3"
             android:layout_width="70dp"
             android:layout_height="70dp"
+            android:layout_marginTop="20dp"
             app:srcCompat="@drawable/logo"
             />
 
@@ -38,7 +40,8 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/fredokasemibold"
         android:text="Create your account"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginStart="30dp"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -50,6 +53,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
         android:layout_gravity="center"
         >
         <EditText
@@ -89,6 +93,7 @@
         android:layout_width="360dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/roundstyle"
         android:backgroundTint="@color/lightblue"
         android:fontFamily="@font/fredokaregular"
@@ -105,6 +110,7 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
         android:orientation="horizontal"
         android:layout_gravity="center"
 
@@ -134,8 +140,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:textColorHint="@color/black"
-            android:textSize="16sp"
-            />
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -145,6 +150,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/roundstyle"
         android:backgroundTint="@color/lightblue"
         android:gravity="center"
@@ -177,6 +183,7 @@
         android:layout_width="360dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
         android:layout_gravity="center"
         android:background="@drawable/roundstyle"
         android:backgroundTint="@color/lightblue"
@@ -194,6 +201,7 @@
         android:layout_width="360dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/roundstyle"
         android:backgroundTint="@color/lightblue"
         android:gravity="center"
@@ -227,6 +235,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
         android:layout_gravity="center"
         android:gravity="center"
         >
@@ -325,7 +334,8 @@
             android:fontFamily="@font/fredokaregular"
             android:text="Already have an account?"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            />
 
         <TextView
             android:id="@+id/tv_loginButton"
