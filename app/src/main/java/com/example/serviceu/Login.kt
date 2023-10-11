@@ -1,13 +1,13 @@
 package com.example.serviceu
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
 class Login : AppCompatActivity() {
 
@@ -17,7 +17,6 @@ class Login : AppCompatActivity() {
     private lateinit var password: EditText
 
 
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -35,20 +34,40 @@ class Login : AppCompatActivity() {
 
         loginBtn.setOnClickListener {
 
-            val emailAddress = email.text.toString().trim()
-            val emailPattern = Regex("[a-zA-Z0-9._-]+@[a-zA-Z]+\\.+[a-zA-Z]+")
+            if (logInValidation()){
+                clearErrors()
 
-            if (emailAddress.isEmpty() || !emailAddress.matches(emailPattern)) {
-                email.error = "Invalid Email Address"
-                email.visibility = View.VISIBLE
-                return@setOnClickListener
-            }else {
-                email.error = null
+                Toast.makeText(this, "LogIn Completed", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, Services::class.java)
                 startActivity(intent)
+                finish()
             }
         }
     }
 
+    private fun clearErrors() {
+        email.error = null
+        password.error = null
+    }
+    private fun showError(field: EditText, message: String) {
+        field.error = message
+        field.visibility = View.VISIBLE
+    }
+
+    private fun logInValidation() : Boolean {
+        val emailAddress = email.text.toString().trim()
+        val emailPattern = Regex("[a-zA-Z0-9._-]+@[a-zA-Z]+\\.+[a-zA-Z]+")
+
+        try {
+            if (emailAddress.isEmpty() || !emailAddress.matches(emailPattern)) {
+                email.error = "Invalid Email Address"
+                email.visibility = View.VISIBLE
+                return false
+            }
+        }catch (e:Exception){
+            Toast.makeText(this, "An error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
+        }
+        return true
+    }
 
 }

@@ -46,6 +46,7 @@ class Profile : AppCompatActivity() {
             Toast.makeText(this,"Logged out", Toast.LENGTH_LONG).show()
             val intent = Intent(this, LoginSignUp::class.java)
             this.startActivity(intent)
+            finish()
         }
 
         cancelButton.setOnClickListener {
