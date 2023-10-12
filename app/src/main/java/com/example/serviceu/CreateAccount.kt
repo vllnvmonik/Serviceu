@@ -14,6 +14,8 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.serviceu.database.DatabaseHelper
+import com.example.serviceu.database.User
 
 
 class CreateAccount : AppCompatActivity() {
@@ -23,22 +25,30 @@ class CreateAccount : AppCompatActivity() {
     private lateinit var email: EditText
     private lateinit var phoneNumber: EditText
     private lateinit var homeAddress: EditText
-    private lateinit var radioGroup: RadioGroup
-    private lateinit var radioGroupOne: RadioGroup
     private lateinit var btCreate: Button
     private lateinit var password: EditText
     private lateinit var confirmPassword: EditText
     private lateinit var category: TextView
     private lateinit var categorySpinner: Spinner
+    private lateinit var radioGroupGender: RadioGroup
+    private lateinit var radioMale: RadioButton
+    private lateinit var radioFemale: RadioButton
+    private lateinit var radioGroupRole: RadioGroup
     private lateinit var radioCustomer: RadioButton
     private lateinit var radioProvider: RadioButton
     private lateinit var backButton: ImageView
     private lateinit var loginButton: TextView
 
+    //database
+    private lateinit var db: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_account)
+
+        //database
+        db = DatabaseHelper(this)
+
 
         firstName = findViewById(R.id.et_firstname)
         lastName = findViewById(R.id.et_lastname)
@@ -46,12 +56,14 @@ class CreateAccount : AppCompatActivity() {
         phoneNumber = findViewById(R.id.et_phoneNumber)
         homeAddress = findViewById(R.id.et_City)
         btCreate = findViewById(R.id.bt_createAccount)
-        radioGroup = findViewById(R.id.rb_Gender)
-        radioGroupOne = findViewById(R.id.rb_role)
         password = findViewById(R.id.et_password)
         confirmPassword = findViewById(R.id.et_confirmPassword)
         category = findViewById(R.id.tv_category)
         categorySpinner = findViewById(R.id.sp_category)
+        radioGroupGender = findViewById(R.id.rb_gender)
+        radioGroupRole = findViewById(R.id.rb_role)
+        radioMale = findViewById(R.id.rb_male)
+        radioFemale = findViewById(R.id.rb_female)
         radioCustomer = findViewById(R.id.rb_customer)
         radioProvider = findViewById(R.id.rb_serviceProvider)
         backButton = findViewById(R.id.back_button)
@@ -87,7 +99,7 @@ class CreateAccount : AppCompatActivity() {
         }
 
         // this is for the radio buttons
-        radioGroupOne.setOnCheckedChangeListener { _, checkedId ->
+        radioGroupRole.setOnCheckedChangeListener { _, checkedId ->
 
             if (checkedId == R.id.rb_customer) {
                 categorySpinner.visibility = View.INVISIBLE
@@ -116,6 +128,24 @@ class CreateAccount : AppCompatActivity() {
 
         btCreate.setOnClickListener {
             if (signUpValidation()){
+                val selectedGender = findViewById<RadioButton>(radioGroupGender.checkedRadioButtonId)?.text.toString()
+                val selectedRole = findViewById<RadioButton>(radioGroupRole.checkedRadioButtonId)?.text.toString()
+
+                //database
+                val user = User(
+                    id = -1,
+                    firstname = firstName.text.toString(),
+                    lastname = lastName.text.toString(),
+                    email = email.text.toString(),
+                    phone = phoneNumber.text.toString(),
+                    gender = selectedGender,
+                    address = homeAddress.text.toString(),
+                    role = selectedRole,
+                    category = category.text.toString(),
+                    password = password.text.toString(),
+                )
+                db.createAccount(user)
+
                 clearErrors()
 
                 Toast.makeText(this, "Validation Completed", Toast.LENGTH_SHORT).show()
@@ -163,9 +193,9 @@ class CreateAccount : AppCompatActivity() {
 
         // RadioButtons
         val selectedGender =
-            findViewById<RadioButton>(radioGroup.checkedRadioButtonId)?.text.toString()
-        val selected =
-            findViewById<RadioButton>(radioGroup.checkedRadioButtonId)?.text.toString()
+            findViewById<RadioButton>(radioGroupGender.checkedRadioButtonId)?.text.toString()
+        val selectedRole =
+            findViewById<RadioButton>(radioGroupRole.checkedRadioButtonId)?.text.toString()
 
         try {
             if (firstname.isEmpty()) {
@@ -197,7 +227,7 @@ class CreateAccount : AppCompatActivity() {
                 return false
             }
 
-            if (selected.isEmpty()) {
+            if (selectedRole.isEmpty()) {
                 return false
             }
 
@@ -214,6 +244,7 @@ class CreateAccount : AppCompatActivity() {
             Toast.makeText(this, "An error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
         }
         return true
+
     }
 }
 

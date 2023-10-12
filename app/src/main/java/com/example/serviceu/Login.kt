@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.serviceu.database.DatabaseHelper
 
 class Login : AppCompatActivity() {
 
@@ -16,10 +17,15 @@ class Login : AppCompatActivity() {
     private lateinit var email: EditText
     private lateinit var password: EditText
 
+    // database
+    private lateinit var db: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        // database
+        db = DatabaseHelper(this)
 
         backButton = findViewById(R.id.back_button)
         loginBtn = findViewById(R.id.loginBtn)
@@ -33,16 +39,34 @@ class Login : AppCompatActivity() {
         }
 
         loginBtn.setOnClickListener {
+            if (logInValidation()) {
 
-            if (logInValidation()){
-                clearErrors()
-
-                Toast.makeText(this, "LogIn Completed", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, Services::class.java)
-                startActivity(intent)
-                finish()
+                if (checkEmail(email = email.text.toString())) {
+                    val isSuccess = db.loginAccount(email = email.text.toString(), password = password.text.toString())
+                    // checks if email and pass matches
+                    if (isSuccess) {
+                        clearErrors()
+                        password.text.clear()
+                        Toast.makeText(this, "Logged in", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, Services::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        // checks if email and pass did not match
+                        password.text.clear()
+                        Toast.makeText(this, "Email and Password did not match", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    // checks if the email is in the database
+                    password.text.clear()
+                    Toast.makeText(this, "Email does not exist", Toast.LENGTH_SHORT).show()
+                }
             }
         }
+    }
+    //email checker from database
+    private fun checkEmail(email: String): Boolean {
+        return db.checkEmail(email)
     }
 
     private fun clearErrors() {
@@ -60,7 +84,7 @@ class Login : AppCompatActivity() {
 
         try {
             if (emailAddress.isEmpty() || !emailAddress.matches(emailPattern)) {
-                email.error = "Invalid Email Address"
+                showError(email, "Invalid Email Address")
                 email.visibility = View.VISIBLE
                 return false
             }
