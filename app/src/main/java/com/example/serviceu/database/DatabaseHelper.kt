@@ -19,7 +19,7 @@ class DatabaseHelper(context: Context):SQLiteOpenHelper(context, DATABASE_NAME, 
             "$COL_USER_ADDRESS TEXT NOT NULL, " +
             "$COL_USER_ROLE TEXT NOT NULL, " +
             "$COL_USER_CATEGORY TEXT NOT NULL, " +
-            "$COL_USER_PASSWORD TEXT NOT NULL")
+            "$COL_USER_PASSWORD TEXT NOT NULL)")
 
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(CREATE_TABLE_USER)
