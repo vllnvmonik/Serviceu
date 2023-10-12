@@ -1,5 +1,6 @@
 package com.example.serviceu
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -81,6 +82,7 @@ class CreateAccount : AppCompatActivity() {
         categorySpinner.adapter = adapter
 
         categorySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            @SuppressLint("SetTextI18n")
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
@@ -91,6 +93,7 @@ class CreateAccount : AppCompatActivity() {
                 category.text = "Category: $selectedCategory"
             }
 
+            @SuppressLint("SetTextI18n")
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 category.text = "Category:"
 
@@ -111,7 +114,7 @@ class CreateAccount : AppCompatActivity() {
         }
 
 
-        // buttons funtionalities
+        // buttons functionalities
         backButton.setOnClickListener {
             val intent = Intent(this, LoginSignUp::class.java)
             startActivity(intent)

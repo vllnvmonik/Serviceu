@@ -14,7 +14,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
         app:srcCompat="@drawable/baseline_arrow_back_24"
-        android:contentDescription="TODO" />
+        android:contentDescription="@string/todo" />
 
     <TextView
         android:id="@+id/profileView"
@@ -23,7 +23,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/fredokasemibold"
-        android:text="Profile"
+        android:text="@string/profile"
         android:textColor="@color/black"
         android:textSize="30sp" />
 
@@ -112,10 +112,11 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="60dp"
-        android:fontFamily="@font/fredokasemibold"
         android:background="@drawable/roundstyle"
         android:backgroundTint="@color/faintred"
+        android:fontFamily="@font/fredokasemibold"
+        android:text="@string/logout"
         android:textColor="@color/white"
-        android:text="@string/logout" />
+        tools:ignore="TextContrastCheck" />
 
 </LinearLayout>

@@ -15,7 +15,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="45dp"
         app:srcCompat="@drawable/baseline_arrow_back_24"
-        android:contentDescription="TODO" />
+        android:contentDescription="@string/todo"
+        tools:ignore="ContentDescription" />
 
 
     <TextView
@@ -25,7 +26,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="25dp"
         android:fontFamily="@font/fredokasemibold"
-        android:text="Address"
+        android:text="@string/address"
         android:textAlignment="center"
         android:layout_gravity="center_horizontal"
         android:textSize="35sp"
@@ -37,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/fredokaregular"
-        android:text="Name"
+        android:text="@string/name"
         android:textSize="20sp"
         android:layout_marginStart="35dp"
         android:layout_marginBottom="10dp"
@@ -51,7 +52,7 @@
         android:layout_gravity="center_horizontal"
         android:background="@drawable/roundsquare"
         android:fontFamily="@font/fredokasemibold"
-        android:text="ABCD EFGHIJKL"
+        android:text="@string/name"
         android:padding="10dp"
         android:textSize="20sp"
         />
@@ -63,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/fredokaregular"
-        android:text="Address"
+        android:text="@string/address"
         android:textSize="20sp"
         android:layout_marginStart="35dp"
         android:layout_marginTop="10dp"
@@ -76,7 +77,7 @@
         android:layout_height="50dp"
         android:background="@drawable/roundsquare"
         android:fontFamily="@font/fredokasemibold"
-        android:text="ABCD EFGHIJKL"
+        android:text="@string/address"
         android:padding="10dp"
         android:layout_marginBottom="20dp"
         android:layout_gravity="center_horizontal"
@@ -87,7 +88,7 @@
         android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date and Time"
+        android:text="@string/date_and_time"
         android:layout_marginStart="35dp"
         android:layout_marginBottom="10dp"
         android:textSize="20sp"/>
@@ -114,8 +115,8 @@
         android:background="@drawable/roundstyle"
         android:backgroundTint="@color/blue"
         android:fontFamily="@font/fredokasemibold"
-        android:text="Select Date and Time"
-        android:textColor="@color/white"
+        android:text="@string/select_date_and_time"
+        android:textColor="#FFFFFF"
         android:textSize="18sp" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -125,12 +126,11 @@
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
         android:background="@drawable/roundstyle"
-        android:fontFamily="@font/fredokasemibold"
         android:backgroundTint="@color/blue"
-        android:text="Proceed"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        />
+        android:fontFamily="@font/fredokasemibold"
+        android:text="@string/proceed"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 
 
 </LinearLayout>

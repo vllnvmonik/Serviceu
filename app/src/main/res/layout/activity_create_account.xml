@@ -20,8 +20,7 @@
             android:layout_marginTop="45dp"
             android:layout_marginEnd="220dp"
             android:src="@drawable/baseline_arrow_back_24"
-
-            />
+            android:contentDescription="@string/todo" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -29,7 +28,7 @@
             android:layout_height="70dp"
             android:layout_marginTop="20dp"
             app:srcCompat="@drawable/logo"
-            />
+            android:contentDescription="@string/todo" />
 
     </LinearLayout>
 
@@ -38,14 +37,14 @@
         android:id="@+id/textView3"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/fredokasemibold"
-        android:text="Create your account"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="20dp"
-        android:layout_marginStart="30dp"
+        android:fontFamily="@font/fredokasemibold"
+        android:text="@string/create_your_account"
         android:textColor="@color/black"
         android:textSize="24sp"
-        />
+        tools:ignore="TextSizeCheck" />
 
 
     <LinearLayout
@@ -63,14 +62,14 @@
             android:background="@drawable/roundstyle"
             android:backgroundTint="@color/lightblue"
             android:fontFamily="@font/fredokaregular"
-            android:hint="First Name"
+            android:hint="@string/first_name"
             android:inputType="text"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:textColorHint="@color/black"
             android:textSize="16sp"
-            />
+            android:autofillHints="" />
         <EditText
             android:id="@+id/et_lastname"
             android:layout_width="175dp"
@@ -78,13 +77,13 @@
             android:background="@drawable/roundstyle"
             android:backgroundTint="@color/lightblue"
             android:fontFamily="@font/fredokaregular"
-            android:hint="Last Name"
+            android:hint="@string/last_name"
             android:inputType="text"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:textColorHint="@color/black"
             android:textSize="16sp"
-            />
+            android:autofillHints="" />
 
     </LinearLayout>
 
@@ -97,14 +96,14 @@
         android:background="@drawable/roundstyle"
         android:backgroundTint="@color/lightblue"
         android:fontFamily="@font/fredokaregular"
-        android:hint="Email Address"
+        android:hint="@string/email_address"
         android:inputType="textEmailAddress"
         android:layout_gravity="center"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:textColorHint="@color/black"
         android:textSize="16sp"
-        />
+        android:autofillHints="" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -120,9 +119,9 @@
             android:id="@+id/tv_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:fontFamily="@font/fredokasemibold"
-            android:text="+63"
+            android:text="@string/_63"
             android:textColorHint="@color/black"
             android:textSize="22sp" />
 
@@ -134,13 +133,15 @@
             android:background="@drawable/roundstyle"
             android:backgroundTint="@color/lightblue"
             android:fontFamily="@font/fredokaregular"
-            android:hint="Phone Number"
+            android:hint="@string/phone_number"
             android:inputType="number"
             android:maxLength="10"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:textColorHint="@color/black"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            tools:ignore="TextFields"
+            android:autofillHints="" />
 
     </LinearLayout>
 
@@ -160,9 +161,9 @@
             android:id="@+id/rb_male"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="50dp"
+            android:layout_marginEnd="50dp"
             android:fontFamily="@font/fredokaregular"
-            android:text="Male"
+            android:text="@string/male"
             android:textSize="16sp"
             />
 
@@ -171,9 +172,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="40dp"
+            android:layout_marginStart="40dp"
             android:fontFamily="@font/fredokaregular"
-            android:text="Female"
+            android:text="@string/female"
             android:textSize="16sp"
             />
     </RadioGroup>
@@ -188,13 +189,13 @@
         android:background="@drawable/roundstyle"
         android:backgroundTint="@color/lightblue"
         android:fontFamily="@font/fredokaregular"
-        android:hint="Enter your complete address"
+        android:hint="@string/enter_your_complete_address"
         android:inputType="text"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:textColorHint="@color/black"
         android:textSize="16sp"
-        />
+        android:autofillHints="" />
 
     <RadioGroup
         android:id="@+id/rb_role"
@@ -214,9 +215,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:fontFamily="@font/fredokaregular"
-            android:text="Customer"
+            android:text="@string/customer"
             android:textSize="16sp" />
 
         <RadioButton
@@ -225,7 +226,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/fredokaregular"
-            android:text="Service Provider"
+            android:text="@string/service_provider"
             android:textSize="16sp"
             />
 
@@ -247,15 +248,15 @@
             android:background="@drawable/roundstyle"
             android:backgroundTint="@color/lightblue"
             android:fontFamily="@font/fredokaregular"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:layout_gravity="center"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:textColorHint="@color/black"
             android:textSize="16sp"
-            />
+            android:autofillHints="" />
 
 
         <EditText
@@ -265,12 +266,13 @@
             android:background="@drawable/roundstyle"
             android:backgroundTint="@color/lightblue"
             android:fontFamily="@font/fredokaregular"
-            android:hint="Confirm Password"
+            android:hint="@string/confirm_password"
             android:inputType="textPassword"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:textColorHint="@color/black"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -288,9 +290,9 @@
             android:background="@drawable/roundstyle"
             android:backgroundTint="@color/lightblue"
             android:fontFamily="@font/fredokaregular"
-            android:paddingLeft="12dp"
+            android:paddingStart="12dp"
             android:paddingTop="12dp"
-            android:paddingRight="10dp"
+            android:paddingEnd="10dp"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:visibility="invisible" />
@@ -315,8 +317,8 @@
         android:fontFamily="@font/fredokasemibold"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="Create Account"
-        android:textColor="@color/white"
+        android:text="@string/create_account"
+        android:textColor="#FFFFFF"
         android:textSize="18sp" />
 
     <LinearLayout
@@ -332,7 +334,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"
             android:fontFamily="@font/fredokaregular"
-            android:text="Already have an account?"
+            android:text="@string/already_have_an_account"
             android:textColor="@color/black"
             android:textSize="16sp"
             />
@@ -343,7 +345,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/fredokaregular"
-            android:text="Login"
+            android:text="@string/login"
             android:textColor="@color/black"
             android:textSize="16sp" />
 

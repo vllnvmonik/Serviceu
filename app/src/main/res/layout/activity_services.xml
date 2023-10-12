@@ -16,14 +16,14 @@
         android:layout_marginBottom="20dp"
         android:fontFamily="@font/fredokasemibold"
         android:gravity="center"
-        android:text="Services"
+        android:text="@string/services"
         android:textColor="@color/black"
         android:textSize="40sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/rv_services"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextSizeCheck" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_services"

@@ -1,14 +1,15 @@
 package com.example.serviceu
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.TimePicker
+import androidx.appcompat.app.AppCompatActivity
 import java.util.Calendar
 
 class Address : AppCompatActivity(),DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
@@ -71,6 +72,7 @@ class Address : AppCompatActivity(),DatePickerDialog.OnDateSetListener, TimePick
         TimePickerDialog(this, this, hour, minute, false).show()
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
         savedHour = hourOfDay
         savedMinute = minute

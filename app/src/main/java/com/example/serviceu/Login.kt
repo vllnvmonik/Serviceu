@@ -73,7 +73,7 @@ class Login : AppCompatActivity() {
         email.error = null
         password.error = null
     }
-    private fun showError(field: EditText, message: String) {
+    private fun showError(field: EditText, message : String) {
         field.error = message
         field.visibility = View.VISIBLE
     }

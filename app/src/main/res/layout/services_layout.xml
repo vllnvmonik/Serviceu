@@ -17,17 +17,18 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal"
-        >
+        tools:ignore="UseCompoundDrawables">
 
         <ImageView
             android:id="@+id/ivServiceImage"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/sampleprofile"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="20dp"
+            android:contentDescription="@string/todo"
 
-            />
+            android:src="@drawable/sampleprofile"
+            tools:ignore="ImageContrastCheck" />
 
         <TextView
             android:id="@+id/tvServiceTitle"
@@ -36,11 +37,10 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="50dp"
             android:fontFamily="@font/fredokasemibold"
-            android:text="LAUNDRY"
+            android:text="@string/laundry"
             android:textColor="@color/black"
-            android:textSize="20dp"
-            >
-
+            android:textSize="20sp"
+            tools:ignore="TextSizeCheck">
         </TextView>
 
     </LinearLayout>
