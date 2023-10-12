@@ -66,7 +66,10 @@ class Services : AppCompatActivity() {
 
         servicesList = arrayListOf()
         getData()
+
+
     }
+
 
     private fun getData(){
         for ( i in imageList.indices){
@@ -74,5 +77,7 @@ class Services : AppCompatActivity() {
             servicesList.add(servicesClass)
         }
         recyclerView.adapter = ServicesAdapterClass(servicesList)
+
     }
 }
+
