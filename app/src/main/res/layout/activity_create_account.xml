@@ -140,7 +140,7 @@
     </LinearLayout>
 
     <RadioGroup
-        android:id="@+id/rb_Gender"
+        android:id="@+id/rb_gender"
         android:layout_width="360dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
