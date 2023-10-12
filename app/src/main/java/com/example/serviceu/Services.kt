@@ -19,22 +19,22 @@ class Services : AppCompatActivity() {
 
         bottomNav = findViewById(R.id.navmenu)
         bottomNav.setOnItemSelectedListener {
-            when(it.itemId){
+            when (it.itemId) {
                 R.id.home -> {
                     val intent = Intent(this, Services::class.java)
                     startActivity(intent)
-                    finish()}
+                    finish() }
 //                R.id.bookings -> {
 //                    val intent = Intent(this, Bookings::class.java)
 //                    startActivity(intent)
 //                    finish()}
-                R.id.profile->{
+                R.id.profile -> {
                     val intent = Intent(this, Profile::class.java)
                     startActivity(intent)
-                    finish()}
-                }
-                true
+                    finish() }
             }
+            true
+        }
 
 
         imageList = arrayOf(
