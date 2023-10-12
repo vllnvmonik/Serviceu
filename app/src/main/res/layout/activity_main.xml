@@ -8,15 +8,13 @@
 
     <ImageView
         android:id="@+id/imgv_logo"
-        android:layout_width="344dp"
-        android:layout_height="338dp"
+        android:layout_width="307dp"
+        android:layout_height="295dp"
         android:importantForAccessibility="no"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498"
         app:srcCompat="@drawable/wlogo" />
 
 
