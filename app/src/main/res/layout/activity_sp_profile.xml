@@ -7,12 +7,29 @@
     android:layout_height="match_parent"
     tools:context=".Sp_profile">
 
+    <TextView
+        android:id="@+id/tv_serviceproviders"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="@string/service_providers"
+        android:textColor="@color/eerieblack"
+        android:fontFamily="@font/fredokasemibold"
+        android:textSize="40sp"
+        android:gravity="center_vertical"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlCompat">
+
+    </TextView>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="409dp"
         android:id="@+id/rvprofileList"
-        android:layout_height="729dp"
+        android:layout_width="409dp"
+        android:layout_height="710dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tv_serviceproviders" />
 </androidx.constraintlayout.widget.ConstraintLayout>

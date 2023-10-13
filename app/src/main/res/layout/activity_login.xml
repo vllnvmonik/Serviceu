@@ -24,7 +24,7 @@
         android:layout_marginTop="250dp"
         android:fontFamily="@font/fredokasemibold"
         android:text="@string/login"
-        android:textColor="@color/black"
+        android:textColor="@color/eerieblack"
         android:textSize="35sp" />
 
     <EditText
@@ -43,8 +43,8 @@
         android:hint="@string/emailHint"
         android:inputType="textEmailAddress"
         android:padding="15dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
+        android:textColor="@color/eerieblack"
+        android:textColorHint="@color/eerieblack"
         android:autofillHints="" />
 
     <EditText
@@ -61,8 +61,8 @@
         android:hint="@string/passwordHint"
         android:inputType="textPassword"
         android:padding="15dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
+        android:textColor="@color/eerieblack"
+        android:textColorHint="@color/eerieblack"
         android:autofillHints="" />
 
     <androidx.appcompat.widget.AppCompatButton

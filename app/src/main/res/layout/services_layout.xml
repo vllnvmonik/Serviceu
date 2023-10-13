@@ -38,7 +38,7 @@
             android:layout_marginStart="50dp"
             android:fontFamily="@font/fredokasemibold"
             android:text="@string/laundry"
-            android:textColor="@color/black"
+            android:textColor="@color/eerieblack"
             android:textSize="20sp"
             tools:ignore="TextSizeCheck">
         </TextView>

@@ -2,12 +2,13 @@ package com.example.serviceu
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class Services : AppCompatActivity() {
+class Services : AppCompatActivity(), RVClick {
     private lateinit var recyclerView: RecyclerView
     private lateinit var servicesList: ArrayList<ServicesClass>
     private lateinit var imageList: Array <Int>
@@ -67,17 +68,23 @@ class Services : AppCompatActivity() {
         servicesList = arrayListOf()
         getData()
 
-
     }
-
 
     private fun getData(){
         for ( i in imageList.indices){
             val servicesClass = ServicesClass(imageList[i], titleList[i])
             servicesList.add(servicesClass)
         }
-        recyclerView.adapter = ServicesAdapterClass(servicesList)
+        recyclerView.adapter = ServicesAdapterClass(servicesList, this)
 
     }
+
+    override fun rvCLick(position: Int) {
+        Toast.makeText(this, "Item: $position is clicked", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, Sp_profile::class.java)
+        startActivity(intent)
+    }
+
+
 }
 

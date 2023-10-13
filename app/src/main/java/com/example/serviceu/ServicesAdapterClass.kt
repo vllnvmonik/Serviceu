@@ -1,6 +1,5 @@
 package com.example.serviceu
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,8 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ServicesAdapterClass(private val servicesList: ArrayList<ServicesClass>): RecyclerView.Adapter<ServicesAdapterClass.ViewHolderClass>(){
-
+class ServicesAdapterClass(private val servicesList: ArrayList<ServicesClass>, private val rvClick: RVClick): RecyclerView.Adapter<ServicesAdapterClass.ViewHolderClass>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderClass {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.services_layout, parent, false)
@@ -24,9 +22,9 @@ class ServicesAdapterClass(private val servicesList: ArrayList<ServicesClass>): 
         val currentItem = servicesList[position]
         holder.rvImageHolder.setImageResource(currentItem.serviceImage)
         holder.rvTextViewHolder.text = currentItem.serviceTitle
-        holder.rvImageHolder.setOnClickListener{
- //           val intent = Intent(getActivity,Sp_profile::class.java)
-  //          getActivity.startActivity(intent)
+
+        holder.itemView.setOnClickListener {
+            rvClick.rvCLick(position)
         }
     }
 

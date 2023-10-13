@@ -51,7 +51,7 @@
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/fredokasemibold"
                 android:text="@string/cancel"
-                android:textColor="@color/black"
+                android:textColor="@color/eerieblack"
                 android:textSize="12sp"
 
                 />

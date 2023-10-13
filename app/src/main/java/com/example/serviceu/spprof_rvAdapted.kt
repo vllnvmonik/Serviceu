@@ -25,7 +25,9 @@ class sp_profileAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.name.text = profilelists[position].title
         holder.profilepic.setImageResource( profilelists[position].img1)
+        holder.category.text = profilelists[position].category
         holder.contact.text = profilelists[position].rad
+
         holder.cardview.setOnClickListener{
             Toast.makeText(getActivity, profilelists[position].title, Toast.LENGTH_LONG).show()
         }
@@ -33,6 +35,7 @@ class sp_profileAdapter(
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val profilepic : ImageView = itemView.findViewById(R.id.img_profilepic)
         val name : TextView = itemView.findViewById(R.id.tv_spname)
+        val category: TextView = itemView.findViewById(R.id.tv_sp_category)
         val contact : TextView = itemView.findViewById(R.id.tv_sp_number)
         val cardview : CardView = itemView.findViewById(R.id.cardview)
     }

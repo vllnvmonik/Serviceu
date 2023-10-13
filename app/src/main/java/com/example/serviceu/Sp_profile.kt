@@ -1,9 +1,9 @@
 package com.example.serviceu
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -32,17 +32,17 @@ class Sp_profile : AppCompatActivity() {
     }
 
     private fun prepareProfileListData() {
-        var profile = Sp_profile_holder("MONICA", R.drawable.baseline_person_outline_24,"095652332")
+        var profile = Sp_profile_holder("MONICA", R.drawable.baseline_person_outline_24,"Tagalaba","095652332")
         profileList.add(profile)
-        profile = Sp_profile_holder("glaiza maylan",R.drawable.baseline_person_outline_24,"099129391")
+        profile = Sp_profile_holder("glaiza maylan", R.drawable.baseline_person_outline_24, "Tagalaba", "099129391")
         profileList.add(profile)
-        profile = Sp_profile_holder("monica dikoalam",R.drawable.baseline_person_outline_24,"4124142e")
+        profile = Sp_profile_holder("monica dikoalam",R.drawable.baseline_person_outline_24,"Tagalaba","4124142e")
         profileList.add(profile)
-        profile = Sp_profile_holder("vinna diko alam",R.drawable.baseline_person_outline_24,"3267487238")
+        profile = Sp_profile_holder("vinna diko alam",R.drawable.baseline_person_outline_24,"Tagalaba","3267487238")
         profileList.add(profile)
-        profile = Sp_profile_holder("sige diko alam",R.drawable.baseline_person_outline_24,"123127372")
+        profile = Sp_profile_holder("sige diko alam",R.drawable.baseline_person_outline_24,"Tagalaba","123127372")
         profileList.add(profile)
-        profile = Sp_profile_holder("talaga",R.drawable.baseline_person_outline_24,"124124124")
+        profile = Sp_profile_holder("talaga",R.drawable.baseline_person_outline_24,"Tagalaba","124124124")
         profileList.add(profile)
     }
 }

@@ -24,7 +24,7 @@
         android:layout_marginTop="5dp"
         android:fontFamily="@font/fredokasemibold"
         android:text="@string/profile"
-        android:textColor="@color/black"
+        android:textColor="@color/eerieblack"
         android:textSize="30sp" />
 
     <ImageView
@@ -49,7 +49,7 @@
         android:layout_marginBottom="20dp"
         android:fontFamily="@font/fredokasemibold"
         android:text="@string/fullname"
-        android:textColor="@color/black"
+        android:textColor="@color/eerieblack"
         android:textSize="30sp" />
 
     <TextView
@@ -65,7 +65,7 @@
         android:padding="15dp"
         android:text="@string/email"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/eerieblack"
         android:textSize="15sp"
         tools:ignore="RtlCompat"
         app:drawableLeftCompat="@drawable/baseline_mail_outline_24" />
@@ -84,7 +84,7 @@
         android:padding="15dp"
         android:text="@string/phonenumberHint"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/eerieblack"
         android:textSize="15sp"
         tools:ignore="RtlCompat"
         app:drawableLeftCompat="@drawable/baseline_phone_24" />
@@ -101,7 +101,7 @@
         android:padding="15dp"
         android:text="@string/addressHint"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/eerieblack"
         android:textSize="15sp"
         app:drawableLeftCompat="@drawable/baseline_location_on_24"
         tools:ignore="RtlCompat" />
