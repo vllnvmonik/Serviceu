@@ -46,46 +46,23 @@
         android:textSize="24sp"
         tools:ignore="TextSizeCheck" />
 
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+    <EditText
+        android:id="@+id/et_fullname"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="@color/lightblue"
+        android:fontFamily="@font/fredokaregular"
+        android:hint="Full Name"
+        android:inputType="textEmailAddress"
         android:layout_gravity="center"
-        >
-        <EditText
-            android:id="@+id/et_firstname"
-            android:layout_width="175dp"
-            android:layout_height="50dp"
-            android:background="@drawable/roundstyle"
-            android:backgroundTint="@color/lightblue"
-            android:fontFamily="@font/fredokaregular"
-            android:hint="@string/first_name"
-            android:inputType="text"
-            android:layout_marginEnd="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:textColorHint="@color/eerieblack"
-            android:textSize="16sp"
-            android:autofillHints="" />
-        <EditText
-            android:id="@+id/et_lastname"
-            android:layout_width="175dp"
-            android:layout_height="50dp"
-            android:background="@drawable/roundstyle"
-            android:backgroundTint="@color/lightblue"
-            android:fontFamily="@font/fredokaregular"
-            android:hint="@string/last_name"
-            android:inputType="text"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:textColorHint="@color/eerieblack"
-            android:textSize="16sp"
-            android:autofillHints="" />
-
-    </LinearLayout>
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColorHint="@color/eerieblack"
+        android:textSize="16sp"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/et_EmailAddress"
@@ -144,40 +121,6 @@
             android:autofillHints="" />
 
     </LinearLayout>
-
-    <RadioGroup
-        android:id="@+id/rb_gender"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/roundstyle"
-        android:backgroundTint="@color/lightblue"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/rb_male"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="50dp"
-            android:fontFamily="@font/fredokaregular"
-            android:text="@string/male"
-            android:textSize="16sp"
-            />
-
-        <RadioButton
-            android:id="@+id/rb_female"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="40dp"
-            android:fontFamily="@font/fredokaregular"
-            android:text="@string/female"
-            android:textSize="16sp"
-            />
-    </RadioGroup>
 
     <EditText
         android:id="@+id/et_City"

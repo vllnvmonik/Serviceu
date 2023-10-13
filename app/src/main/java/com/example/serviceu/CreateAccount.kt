@@ -21,8 +21,7 @@ import com.example.serviceu.database.User
 
 class CreateAccount : AppCompatActivity() {
 
-    private lateinit var firstName: EditText
-    private lateinit var lastName: EditText
+    private lateinit var fullname: EditText
     private lateinit var email: EditText
     private lateinit var phoneNumber: EditText
     private lateinit var homeAddress: EditText
@@ -51,8 +50,7 @@ class CreateAccount : AppCompatActivity() {
         db = DatabaseHelper(this)
 
 
-        firstName = findViewById(R.id.et_firstname)
-        lastName = findViewById(R.id.et_lastname)
+        fullname = findViewById(R.id.et_fullname)
         email = findViewById(R.id.et_EmailAddress)
         phoneNumber = findViewById(R.id.et_phoneNumber)
         homeAddress = findViewById(R.id.et_City)
@@ -61,10 +59,7 @@ class CreateAccount : AppCompatActivity() {
         confirmPassword = findViewById(R.id.et_confirmPassword)
         category = findViewById(R.id.tv_category)
         categorySpinner = findViewById(R.id.sp_category)
-        radioGroupGender = findViewById(R.id.rb_gender)
         radioGroupRole = findViewById(R.id.rb_role)
-        radioMale = findViewById(R.id.rb_male)
-        radioFemale = findViewById(R.id.rb_female)
         radioCustomer = findViewById(R.id.rb_customer)
         radioProvider = findViewById(R.id.rb_serviceProvider)
         backButton = findViewById(R.id.back_button)
@@ -134,20 +129,20 @@ class CreateAccount : AppCompatActivity() {
                 val selectedGender = findViewById<RadioButton>(radioGroupGender.checkedRadioButtonId)?.text.toString()
                 val selectedRole = findViewById<RadioButton>(radioGroupRole.checkedRadioButtonId)?.text.toString()
 
-                //database
-                val user = User(
-                    id = -1,
-                    firstname = firstName.text.toString(),
-                    lastname = lastName.text.toString(),
-                    email = email.text.toString(),
-                    phone = phoneNumber.text.toString(),
-                    gender = selectedGender,
-                    address = homeAddress.text.toString(),
-                    role = selectedRole,
-                    category = category.text.toString(),
-                    password = password.text.toString(),
-                )
-                db.createAccount(user)
+////                //database
+////                val user = User(
+////                    id = -1,
+////                    firstname = firstName.text.toString(),
+////                    lastname = lastName.text.toString(),
+////                    email = email.text.toString(),
+////                    phone = phoneNumber.text.toString(),
+////                    gender = selectedGender,
+////                    address = homeAddress.text.toString(),
+////                    role = selectedRole,
+////                    category = category.text.toString(),
+////                    password = password.text.toString(),
+////                )
+//                db.createAccount(user)
 
                 clearErrors()
 
@@ -166,8 +161,7 @@ class CreateAccount : AppCompatActivity() {
 
 
     private fun clearErrors() {
-        firstName.error = null
-        lastName.error = null
+        fullname.error = null
         email.error = null
         phoneNumber.error = null
         homeAddress.error = null
@@ -184,8 +178,7 @@ class CreateAccount : AppCompatActivity() {
     // validation functions
     private fun signUpValidation(): Boolean {
         // Edit texts
-        val firstname = firstName.text.toString().trim()
-        val lastname = lastName.text.toString().trim()
+        val username = fullname.text.toString().trim()
         val emailAddress = email.text.toString().trim()
         val phonePattern = "^9\\d{9}$".toRegex()
         val emailPattern = "[a-zA-Z0-9._-]+@[a-zA-Z]+\\.+[a-zA-Z]+".toRegex()
@@ -201,13 +194,8 @@ class CreateAccount : AppCompatActivity() {
             findViewById<RadioButton>(radioGroupRole.checkedRadioButtonId)?.text.toString()
 
         try {
-            if (firstname.isEmpty()) {
-                showError(firstName, "Required")
-                return false
-            }
-
-            if (lastname.isEmpty()) {
-                showError(lastName, "Required")
+            if (username.isEmpty()) {
+                showError(fullname, "Required")
                 return false
             }
 
@@ -223,10 +211,6 @@ class CreateAccount : AppCompatActivity() {
 
             if (address.isEmpty()) {
                 showError(homeAddress, "Required")
-                return false
-            }
-
-            if (selectedGender.isEmpty()) {
                 return false
             }
 
