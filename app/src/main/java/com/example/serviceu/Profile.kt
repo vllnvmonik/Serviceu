@@ -47,6 +47,7 @@ class Profile : AppCompatActivity() {
             val intent = Intent(this, LoginSignUp::class.java)
             this.startActivity(intent)
             finish()
+            dialog.dismiss()
         }
 
         cancelButton.setOnClickListener {
