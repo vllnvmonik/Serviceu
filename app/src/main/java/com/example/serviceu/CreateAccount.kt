@@ -3,6 +3,8 @@ package com.example.serviceu
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -15,8 +17,7 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.serviceu.database.DatabaseHelper
-import com.example.serviceu.database.User
+import com.vishnusivadas.advanced_httpurlconnection.PutData
 
 
 class CreateAccount : AppCompatActivity() {
@@ -36,15 +37,59 @@ class CreateAccount : AppCompatActivity() {
     private lateinit var backButton: ImageView
     private lateinit var loginButton: TextView
 
-    //database
-    private lateinit var db: DatabaseHelper
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_account)
+        btCreate = findViewById(R.id.bt_createAccount)
+        radioGroupRole = findViewById(R.id.rb_role)
+        radioCustomer = findViewById(R.id.rb_customer)
+        radioProvider = findViewById(R.id.rb_serviceProvider)
+        val selectedRole = findViewById<RadioButton>(radioGroupRole.checkedRadioButtonId)?.text.toString()
 
-        //database
-        db = DatabaseHelper(this)
+
+        btCreate.setOnClickListener{
+            if (signUpValidation()){
+                val handler = Handler(Looper.getMainLooper())
+                handler.post {
+                    // Starting Write and Read data with URL
+                    // Creating array for parameters
+                    val field = arrayOfNulls<String>(7)
+                    field[0] = "fullname"
+                    field[1] = "email"
+                    field[2] = "phone"
+                    field[3] = "address"
+                    field[4] = "role"
+                    field[5] = "password"
+                    field[6] = "category"
+
+                    // Creating array for data
+                    val data = arrayOfNulls<String>(7)
+                    data[0] = fullName.text.toString()
+                    data[1] = email.text.toString()
+                    data[2] = phoneNumber.text.toString()
+                    data[3] = homeAddress.text.toString()
+                    data[4] = selectedRole
+                    data[5] = password.text.toString()
+                    data[6] = category.text.toString()
+
+                    val putData = PutData("http://192.168.100.6/login/signup.php", "POST", field, data)
+                    if (putData.startPut()) {
+                        if (putData.onComplete()) {
+                            val result = putData.result
+                            if(result.equals("Sign Up Success")){
+                                clearErrors()
+                                Toast.makeText(this, "Sign up Successful", Toast.LENGTH_SHORT).show()
+                                val intent = Intent(this, Services::class.java)
+                                startActivity(intent)
+                                finish()
+                            }else{
+                                Toast.makeText(this, "Sign up Failed", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
 
         fullName = findViewById(R.id.et_fullname)
@@ -119,34 +164,6 @@ class CreateAccount : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
-
-        btCreate.setOnClickListener {
-            if (signUpValidation()){
-                val selectedRole = findViewById<RadioButton>(radioGroupRole.checkedRadioButtonId)?.text.toString()
-
-//                //database
-                val user = User(
-                    id = -1,
-                    fullname = fullName.text.toString(),
-                    email = email.text.toString(),
-                    phone = phoneNumber.text.toString(),
-                    address = homeAddress.text.toString(),
-                    role = selectedRole,
-                    category = category.text.toString(),
-                    password = password.text.toString(),
-                )
-                db.createAccount(user)
-
-                clearErrors()
-
-                Toast.makeText(this, "Validation Completed", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, Services::class.java)
-                startActivity(intent)
-                finish()
-            }
-        }
-
     }
 
     // all of the functions are here
