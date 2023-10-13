@@ -25,10 +25,10 @@ class Services : AppCompatActivity(), RVClick {
                     val intent = Intent(this, Services::class.java)
                     startActivity(intent)
                     finish() }
-//                R.id.bookings -> {
-//                    val intent = Intent(this, Bookings::class.java)
-//                    startActivity(intent)
-//                    finish()}
+                R.id.bookings -> {
+                    val intent = Intent(this, BookingsCustomer::class.java)
+                    startActivity(intent)
+                    finish()}
                 R.id.profile -> {
                     val intent = Intent(this, Profile::class.java)
                     startActivity(intent)
