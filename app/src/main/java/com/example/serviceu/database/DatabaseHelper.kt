@@ -11,11 +11,9 @@ class DatabaseHelper(context: Context):SQLiteOpenHelper(context, DATABASE_NAME, 
 
     private val CREATE_TABLE_USER = ("CREATE TABLE $TABLE_USER(" +
             "$COL_USER_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            "$COL_USER_FIRSTNAME VARCHAR(30) NOT NULL, " +
-            "$COL_USER_LASTNAME VARCHAR(30) NOT NULL, " +
+            "$COL_USER_FULLNAME TEXT NOT NULL, " +
             "$COL_USER_EMAIL TEXT NOT NULL, " +
             "$COL_USER_PHONE INTEGER NOT NULL, " +
-            "$COL_USER_GENDER TEXT NOT NULL, " +
             "$COL_USER_ADDRESS TEXT NOT NULL, " +
             "$COL_USER_ROLE TEXT NOT NULL, " +
             "$COL_USER_CATEGORY TEXT NOT NULL, " +
@@ -32,11 +30,9 @@ class DatabaseHelper(context: Context):SQLiteOpenHelper(context, DATABASE_NAME, 
     fun createAccount(user: User){
         val db = this.writableDatabase
         val value = ContentValues()
-        value.put(COL_USER_FIRSTNAME, user.firstname)
-        value.put(COL_USER_LASTNAME, user.lastname)
+        value.put(COL_USER_FULLNAME, user.fullname)
         value.put(COL_USER_EMAIL, user.email)
         value.put(COL_USER_PHONE, user.phone)
-        value.put(COL_USER_GENDER, user.gender)
         value.put(COL_USER_ADDRESS, user.address)
         value.put(COL_USER_ROLE, user.role)
         value.put(COL_USER_CATEGORY, user.category)
@@ -76,11 +72,9 @@ class DatabaseHelper(context: Context):SQLiteOpenHelper(context, DATABASE_NAME, 
         private const val TABLE_USER = "tbl_user"
 
         private const val COL_USER_ID = "user_id"
-        private const val COL_USER_FIRSTNAME = "user_firstname"
-        private const val COL_USER_LASTNAME = "user_lastname"
+        private const val COL_USER_FULLNAME = "user_fullname"
         private const val COL_USER_EMAIL = "user_email"
         private const val COL_USER_PHONE = "user_phone"
-        private const val COL_USER_GENDER = "user_gender"
         private const val COL_USER_ADDRESS = "user_address"
         private const val COL_USER_ROLE = "user_role"
         private const val COL_USER_CATEGORY = "user_category"

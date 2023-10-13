@@ -85,6 +85,5 @@ class Services : AppCompatActivity(), RVClick {
         startActivity(intent)
     }
 
-
 }
 

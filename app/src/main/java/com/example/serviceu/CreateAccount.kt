@@ -21,7 +21,7 @@ import com.example.serviceu.database.User
 
 class CreateAccount : AppCompatActivity() {
 
-    private lateinit var fullname: EditText
+    private lateinit var fullName: EditText
     private lateinit var email: EditText
     private lateinit var phoneNumber: EditText
     private lateinit var homeAddress: EditText
@@ -30,9 +30,6 @@ class CreateAccount : AppCompatActivity() {
     private lateinit var confirmPassword: EditText
     private lateinit var category: TextView
     private lateinit var categorySpinner: Spinner
-    private lateinit var radioGroupGender: RadioGroup
-    private lateinit var radioMale: RadioButton
-    private lateinit var radioFemale: RadioButton
     private lateinit var radioGroupRole: RadioGroup
     private lateinit var radioCustomer: RadioButton
     private lateinit var radioProvider: RadioButton
@@ -50,7 +47,7 @@ class CreateAccount : AppCompatActivity() {
         db = DatabaseHelper(this)
 
 
-        fullname = findViewById(R.id.et_fullname)
+        fullName = findViewById(R.id.et_fullname)
         email = findViewById(R.id.et_EmailAddress)
         phoneNumber = findViewById(R.id.et_phoneNumber)
         homeAddress = findViewById(R.id.et_City)
@@ -126,23 +123,20 @@ class CreateAccount : AppCompatActivity() {
 
         btCreate.setOnClickListener {
             if (signUpValidation()){
-                val selectedGender = findViewById<RadioButton>(radioGroupGender.checkedRadioButtonId)?.text.toString()
                 val selectedRole = findViewById<RadioButton>(radioGroupRole.checkedRadioButtonId)?.text.toString()
 
-////                //database
-////                val user = User(
-////                    id = -1,
-////                    firstname = firstName.text.toString(),
-////                    lastname = lastName.text.toString(),
-////                    email = email.text.toString(),
-////                    phone = phoneNumber.text.toString(),
-////                    gender = selectedGender,
-////                    address = homeAddress.text.toString(),
-////                    role = selectedRole,
-////                    category = category.text.toString(),
-////                    password = password.text.toString(),
-////                )
-//                db.createAccount(user)
+//                //database
+                val user = User(
+                    id = -1,
+                    fullname = fullName.text.toString(),
+                    email = email.text.toString(),
+                    phone = phoneNumber.text.toString(),
+                    address = homeAddress.text.toString(),
+                    role = selectedRole,
+                    category = category.text.toString(),
+                    password = password.text.toString(),
+                )
+                db.createAccount(user)
 
                 clearErrors()
 
@@ -161,7 +155,7 @@ class CreateAccount : AppCompatActivity() {
 
 
     private fun clearErrors() {
-        fullname.error = null
+        fullName.error = null
         email.error = null
         phoneNumber.error = null
         homeAddress.error = null
@@ -178,7 +172,7 @@ class CreateAccount : AppCompatActivity() {
     // validation functions
     private fun signUpValidation(): Boolean {
         // Edit texts
-        val username = fullname.text.toString().trim()
+        val fullname = fullName.text.toString().trim()
         val emailAddress = email.text.toString().trim()
         val phonePattern = "^9\\d{9}$".toRegex()
         val emailPattern = "[a-zA-Z0-9._-]+@[a-zA-Z]+\\.+[a-zA-Z]+".toRegex()
@@ -188,14 +182,12 @@ class CreateAccount : AppCompatActivity() {
         val confirmPass = confirmPassword.text.toString()
 
         // RadioButtons
-        val selectedGender =
-            findViewById<RadioButton>(radioGroupGender.checkedRadioButtonId)?.text.toString()
         val selectedRole =
             findViewById<RadioButton>(radioGroupRole.checkedRadioButtonId)?.text.toString()
 
         try {
-            if (username.isEmpty()) {
-                showError(fullname, "Required")
+            if (fullname.isEmpty()) {
+                showError(fullName, "Required")
                 return false
             }
 
