@@ -236,6 +236,8 @@
             android:paddingStart="12dp"
             android:paddingTop="12dp"
             android:paddingEnd="10dp"
+            android:hint="@string/customer"
+            android:textColorHint="@color/eerieblack"
             android:textColor="@color/eerieblack"
             android:textSize="16sp"
             android:visibility="invisible" />

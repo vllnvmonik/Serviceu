@@ -49,7 +49,7 @@ class CreateAccount : AppCompatActivity() {
         val selectedRole = findViewById<RadioButton>(radioGroupRole.checkedRadioButtonId)?.text.toString()
 
 
-        btCreate.setOnClickListener(View.OnClickListener{
+        btCreate.setOnClickListener{
             if (signUpValidation()){
                 // Use Coroutines to perform the network request in the background
                 CoroutineScope(Dispatchers.IO).launch {
@@ -90,7 +90,7 @@ class CreateAccount : AppCompatActivity() {
                     }
                 }
             }
-        })
+        }
 
 
         fullName = findViewById(R.id.et_fullname)
@@ -100,7 +100,6 @@ class CreateAccount : AppCompatActivity() {
         btCreate = findViewById(R.id.bt_createAccount)
         password = findViewById(R.id.et_password)
         confirmPassword = findViewById(R.id.et_confirmPassword)
-        category = findViewById(R.id.tv_category)
         categorySpinner = findViewById(R.id.sp_category)
         radioGroupRole = findViewById(R.id.rb_role)
         radioCustomer = findViewById(R.id.rb_customer)
@@ -109,47 +108,10 @@ class CreateAccount : AppCompatActivity() {
         loginButton = findViewById(R.id.tv_loginButton)
 
 
-        // this is for the spinner or dropdown
-        val categories = arrayOf(
-            "Laundry", "Electrician", "Cleaning", "Pest Control", "Plumber",
-            "Makeup Artist", "Hair Stylist", "Mechanic", "Manicure/Pedicure"
-        )
 
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, categories)
-
-        categorySpinner.adapter = adapter
-
-        categorySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            @SuppressLint("SetTextI18n")
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                val selectedCategory = categories[position]
-                category.text = "Category: $selectedCategory"
-            }
-
-            @SuppressLint("SetTextI18n")
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                category.text = "Category:"
-
-            }
-
-        }
 
         // this is for the radio buttons
-        radioGroupRole.setOnCheckedChangeListener { _, checkedId ->
 
-            if (checkedId == R.id.rb_customer) {
-                categorySpinner.visibility = View.INVISIBLE
-                category.visibility = View.INVISIBLE
-            } else if (checkedId == R.id.rb_serviceProvider) {
-                categorySpinner.visibility = View.VISIBLE
-                category.visibility = View.VISIBLE
-            }
-        }
 
 
         // buttons functionalities
@@ -165,6 +127,8 @@ class CreateAccount : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+        // calls for the dropdown spinner
+        dropDown()
     }
 
     // all of the functions are here
@@ -227,6 +191,10 @@ class CreateAccount : AppCompatActivity() {
             if (selectedRole.isEmpty()) {
                 return false
             }
+            if (radioProvider.isChecked && category.text == "Customer") {
+                Toast.makeText(this, "Select a category", Toast.LENGTH_SHORT).show()
+                return false
+            }
 
             if (pass.isEmpty() || confirmPass.isEmpty()) {
                 showError(password, "Password Required")
@@ -242,6 +210,51 @@ class CreateAccount : AppCompatActivity() {
         }
         return true
 
+    }
+
+    private fun dropDown(){
+        radioGroupRole = findViewById(R.id.rb_role)
+        radioCustomer = findViewById(R.id.rb_customer)
+        radioProvider = findViewById(R.id.rb_serviceProvider)
+        category = findViewById(R.id.tv_category)
+
+        // this is for the spinner or dropdown
+        val categories = arrayOf(
+            "Laundry", "Electrician", "Cleaning", "Pest Control", "Plumber",
+            "Makeup Artist", "Hair Stylist", "Mechanic", "Manicure/Pedicure"
+        )
+
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, categories)
+
+        categorySpinner.adapter = adapter
+
+        radioGroupRole.setOnCheckedChangeListener { _, checkedId ->
+            if (checkedId == R.id.rb_customer) {
+                categorySpinner.visibility = View.INVISIBLE
+                category.visibility = View.INVISIBLE
+                category.text = "Customer"
+            } else if (checkedId == R.id.rb_serviceProvider) {
+                categorySpinner.visibility = View.VISIBLE
+                category.visibility = View.VISIBLE
+                categorySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    @SuppressLint("SetTextI18n")
+                    override fun onItemSelected(
+                        parent: AdapterView<*>?,
+                        view: View?,
+                        position: Int,
+                        id: Long
+                    ) {
+                        val selectedCategory = categories[position]
+                        category.text = selectedCategory
+                    }
+
+                    @SuppressLint("SetTextI18n")
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                        category.text = "Customer"
+                    }
+                }
+            }
+        }
     }
 }
 

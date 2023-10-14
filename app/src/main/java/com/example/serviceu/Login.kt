@@ -35,7 +35,7 @@ class Login : AppCompatActivity() {
             startActivity(intent)
         }
 
-        loginBtn.setOnClickListener(View.OnClickListener {
+        loginBtn.setOnClickListener {
             if (logInValidation()) {
                 val handler = Handler(Looper.getMainLooper())
                 handler.post {
@@ -68,7 +68,7 @@ class Login : AppCompatActivity() {
                 }
             }
 
-        })
+        }
     }
 
     private fun clearErrors() {
