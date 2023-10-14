@@ -157,7 +157,7 @@ class CreateAccount : AppCompatActivity() {
             if (selectedRole.isEmpty()) {
                 return false
             }
-            if (radioProvider.isChecked && category.text == "Customer") {
+            if (radioProvider.isChecked && (category.text == "Customer" || category.text.isNullOrEmpty())) {
                 Toast.makeText(this, "Select a category", Toast.LENGTH_SHORT).show()
                 return false
             }

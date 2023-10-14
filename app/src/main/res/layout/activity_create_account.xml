@@ -161,7 +161,8 @@
             android:layout_marginEnd="20dp"
             android:fontFamily="@font/fredokaregular"
             android:text="@string/customer"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            />
 
         <RadioButton
             android:id="@+id/rb_serviceProvider"
