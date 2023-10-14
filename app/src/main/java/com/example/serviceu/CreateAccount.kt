@@ -3,8 +3,6 @@ package com.example.serviceu
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -18,6 +16,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.vishnusivadas.advanced_httpurlconnection.PutData
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class CreateAccount : AppCompatActivity() {
@@ -47,12 +49,10 @@ class CreateAccount : AppCompatActivity() {
         val selectedRole = findViewById<RadioButton>(radioGroupRole.checkedRadioButtonId)?.text.toString()
 
 
-        btCreate.setOnClickListener{
+        btCreate.setOnClickListener(View.OnClickListener{
             if (signUpValidation()){
-                val handler = Handler(Looper.getMainLooper())
-                handler.post {
-                    // Starting Write and Read data with URL
-                    // Creating array for parameters
+                // Use Coroutines to perform the network request in the background
+                CoroutineScope(Dispatchers.IO).launch {
                     val field = arrayOfNulls<String>(7)
                     field[0] = "fullname"
                     field[1] = "email"
@@ -62,7 +62,6 @@ class CreateAccount : AppCompatActivity() {
                     field[5] = "password"
                     field[6] = "category"
 
-                    // Creating array for data
                     val data = arrayOfNulls<String>(7)
                     data[0] = fullName.text.toString()
                     data[1] = email.text.toString()
@@ -72,24 +71,26 @@ class CreateAccount : AppCompatActivity() {
                     data[5] = password.text.toString()
                     data[6] = category.text.toString()
 
-                    val putData = PutData("http://192.168.100.6/login/signup.php", "POST", field, data)
+                    val putData = PutData("https://serviceuapp.000webhostapp.com/signup.php", "POST", field, data)
                     if (putData.startPut()) {
                         if (putData.onComplete()) {
                             val result = putData.result
-                            if(result.equals("Sign Up Success")){
-                                clearErrors()
-                                Toast.makeText(this, "Sign up Successful", Toast.LENGTH_SHORT).show()
-                                val intent = Intent(this, Services::class.java)
-                                startActivity(intent)
-                                finish()
-                            }else{
-                                Toast.makeText(this, "Sign up Failed", Toast.LENGTH_SHORT).show()
+                            withContext(Dispatchers.Main) {
+                                if (result == "Sign Up Success") {
+                                    clearErrors()
+                                    Toast.makeText(this@CreateAccount, "Sign up Successful", Toast.LENGTH_SHORT).show()
+                                    val intent = Intent(this@CreateAccount, Services::class.java)
+                                    startActivity(intent)
+                                    finish()
+                                } else {
+                                    Toast.makeText(this@CreateAccount, "Sign up Failed", Toast.LENGTH_SHORT).show()
+                                }
                             }
                         }
                     }
                 }
             }
-        }
+        })
 
 
         fullName = findViewById(R.id.et_fullname)

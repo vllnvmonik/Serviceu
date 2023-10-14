@@ -35,7 +35,7 @@ class Login : AppCompatActivity() {
             startActivity(intent)
         }
 
-        loginBtn.setOnClickListener {
+        loginBtn.setOnClickListener(View.OnClickListener {
             if (logInValidation()) {
                 val handler = Handler(Looper.getMainLooper())
                 handler.post {
@@ -50,7 +50,7 @@ class Login : AppCompatActivity() {
                     data[0] = email.text.toString()
                     data[1] = password.text.toString()
 
-                    val putData = PutData("http://192.168.100.6/login/login.php", "POST", field, data)
+                    val putData = PutData("https://serviceuapp.000webhostapp.com/login.php", "POST", field, data)
                     if (putData.startPut()) {
                         if (putData.onComplete()) {
                             val result = putData.result
@@ -68,7 +68,7 @@ class Login : AppCompatActivity() {
                 }
             }
 
-        }
+        })
     }
 
     private fun clearErrors() {
