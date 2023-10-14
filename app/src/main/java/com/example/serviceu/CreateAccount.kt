@@ -42,34 +42,50 @@ class CreateAccount : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_account)
+        // edit texts
+        fullName = findViewById(R.id.et_fullname)
+        email = findViewById(R.id.et_EmailAddress)
+        phoneNumber = findViewById(R.id.et_phoneNumber)
+        homeAddress = findViewById(R.id.et_City)
+        password = findViewById(R.id.et_password)
+        confirmPassword = findViewById(R.id.et_confirmPassword)
+        //buttons
+        backButton = findViewById(R.id.back_button)
+        loginButton = findViewById(R.id.tv_loginButton)
         btCreate = findViewById(R.id.bt_createAccount)
+        //spinner and radios
+        categorySpinner = findViewById(R.id.sp_category)
         radioGroupRole = findViewById(R.id.rb_role)
         radioCustomer = findViewById(R.id.rb_customer)
         radioProvider = findViewById(R.id.rb_serviceProvider)
-        val selectedRole = findViewById<RadioButton>(radioGroupRole.checkedRadioButtonId)?.text.toString()
 
-
+        // buttons functionalities
+        backButton.setOnClickListener {
+            val intent = Intent(this, LoginSignUp::class.java)
+            startActivity(intent)
+            finish()
+        }
+        loginButton.setOnClickListener {
+            val intent = Intent(this, Login::class.java)
+            startActivity(intent)
+            finish()
+        }
         btCreate.setOnClickListener{
             if (signUpValidation()){
                 // Use Coroutines to perform the network request in the background
                 CoroutineScope(Dispatchers.IO).launch {
-                    val field = arrayOfNulls<String>(7)
-                    field[0] = "fullname"
-                    field[1] = "email"
-                    field[2] = "phone"
-                    field[3] = "address"
-                    field[4] = "role"
-                    field[5] = "password"
-                    field[6] = "category"
 
-                    val data = arrayOfNulls<String>(7)
-                    data[0] = fullName.text.toString()
-                    data[1] = email.text.toString()
-                    data[2] = phoneNumber.text.toString()
-                    data[3] = homeAddress.text.toString()
-                    data[4] = selectedRole
-                    data[5] = password.text.toString()
-                    data[6] = category.text.toString()
+                    val field = arrayOf("fullname", "email", "phone", "address", "role", "password", "category")
+
+                    val data = arrayOf(
+                        fullName.text.toString(),
+                        email.text.toString(),
+                        phoneNumber.text.toString(),
+                        homeAddress.text.toString(),
+                        selectedRole(),
+                        password.text.toString(),
+                        category.text.toString()
+                    )
 
                     val putData = PutData("https://serviceuapp.000webhostapp.com/signup.php", "POST", field, data)
                     if (putData.startPut()) {
@@ -91,66 +107,16 @@ class CreateAccount : AppCompatActivity() {
                 }
             }
         }
-
-
-        fullName = findViewById(R.id.et_fullname)
-        email = findViewById(R.id.et_EmailAddress)
-        phoneNumber = findViewById(R.id.et_phoneNumber)
-        homeAddress = findViewById(R.id.et_City)
-        btCreate = findViewById(R.id.bt_createAccount)
-        password = findViewById(R.id.et_password)
-        confirmPassword = findViewById(R.id.et_confirmPassword)
-        categorySpinner = findViewById(R.id.sp_category)
-        radioGroupRole = findViewById(R.id.rb_role)
-        radioCustomer = findViewById(R.id.rb_customer)
-        radioProvider = findViewById(R.id.rb_serviceProvider)
-        backButton = findViewById(R.id.back_button)
-        loginButton = findViewById(R.id.tv_loginButton)
-
-
-
-
-        // this is for the radio buttons
-
-
-
-        // buttons functionalities
-        backButton.setOnClickListener {
-            val intent = Intent(this, LoginSignUp::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-
-        loginButton.setOnClickListener {
-            val intent = Intent(this, Login::class.java)
-            startActivity(intent)
-            finish()
-        }
         // calls for the dropdown spinner
-        dropDown()
+        dropDownSpinner()
     }
-
+    private fun selectedRole(): String {
+        val selectedRadioButtonId = radioGroupRole.checkedRadioButtonId
+        val selectedRadioButton = findViewById<RadioButton>(selectedRadioButtonId)
+        return selectedRadioButton?.text.toString()
+    }
     // all of the functions are here
     // |
-    // v
-
-
-    private fun clearErrors() {
-        fullName.error = null
-        email.error = null
-        phoneNumber.error = null
-        homeAddress.error = null
-        password.error = null
-        confirmPassword.error = null
-        category.visibility = TextView.INVISIBLE
-    }
-    // function to show errors
-    private fun showError(field: EditText, message: String) {
-        field.error = message
-        field.visibility = View.VISIBLE
-    }
-
     // validation functions
     private fun signUpValidation(): Boolean {
         // Edit texts
@@ -165,7 +131,7 @@ class CreateAccount : AppCompatActivity() {
 
         // RadioButtons
         val selectedRole =
-            findViewById<RadioButton>(radioGroupRole.checkedRadioButtonId)?.text.toString()
+            findViewById<RadioButton>(this.radioGroupRole.checkedRadioButtonId)?.text.toString()
 
         try {
             if (fullname.isEmpty()) {
@@ -209,10 +175,24 @@ class CreateAccount : AppCompatActivity() {
             Toast.makeText(this, "An error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
         }
         return true
-
+    }
+    private fun clearErrors() {
+        fullName.error = null
+        email.error = null
+        phoneNumber.error = null
+        homeAddress.error = null
+        password.error = null
+        radioCustomer.error = null
+        radioProvider.error = null
+        confirmPassword.error = null
+    }
+    // function to show errors
+    private fun showError(field: EditText, message: String) {
+        field.error = message
+        field.visibility = View.VISIBLE
     }
 
-    private fun dropDown(){
+    private fun dropDownSpinner(){
         radioGroupRole = findViewById(R.id.rb_role)
         radioCustomer = findViewById(R.id.rb_customer)
         radioProvider = findViewById(R.id.rb_serviceProvider)
@@ -229,28 +209,32 @@ class CreateAccount : AppCompatActivity() {
         categorySpinner.adapter = adapter
 
         radioGroupRole.setOnCheckedChangeListener { _, checkedId ->
-            if (checkedId == R.id.rb_customer) {
-                categorySpinner.visibility = View.INVISIBLE
-                category.visibility = View.INVISIBLE
-                category.text = "Customer"
-            } else if (checkedId == R.id.rb_serviceProvider) {
-                categorySpinner.visibility = View.VISIBLE
-                category.visibility = View.VISIBLE
-                categorySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                    @SuppressLint("SetTextI18n")
-                    override fun onItemSelected(
-                        parent: AdapterView<*>?,
-                        view: View?,
-                        position: Int,
-                        id: Long
-                    ) {
-                        val selectedCategory = categories[position]
-                        category.text = selectedCategory
-                    }
+            when (checkedId) {
+                R.id.rb_customer -> {
+                    categorySpinner.visibility = View.INVISIBLE
+                    category.visibility = View.INVISIBLE
+                    category.text = "Customer"
+                }
+                R.id.rb_serviceProvider -> {
+                    categorySpinner.visibility = View.VISIBLE
+                    category.visibility = View.VISIBLE
 
-                    @SuppressLint("SetTextI18n")
-                    override fun onNothingSelected(parent: AdapterView<*>?) {
-                        category.text = "Customer"
+                    categorySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                        @SuppressLint("SetTextI18n")
+                        override fun onItemSelected(
+                            parent: AdapterView<*>?,
+                            view: View?,
+                            position: Int,
+                            id: Long
+                        ) {
+                            val selectedCategory = categories[position]
+                            category.text = selectedCategory
+                        }
+
+                        @SuppressLint("SetTextI18n")
+                        override fun onNothingSelected(parent: AdapterView<*>?) {
+                            category.text = "Customer"
+                        }
                     }
                 }
             }
