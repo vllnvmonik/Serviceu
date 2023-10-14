@@ -39,6 +39,7 @@ class CreateAccount : AppCompatActivity() {
     private lateinit var backButton: ImageView
     private lateinit var loginButton: TextView
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_account)
@@ -58,6 +59,8 @@ class CreateAccount : AppCompatActivity() {
         radioGroupRole = findViewById(R.id.rb_role)
         radioCustomer = findViewById(R.id.rb_customer)
         radioProvider = findViewById(R.id.rb_serviceProvider)
+
+        val sharedPreferenceHelper = SharedPreferenceClass(this)
 
         // buttons functionalities
         backButton.setOnClickListener {
@@ -94,6 +97,8 @@ class CreateAccount : AppCompatActivity() {
                             withContext(Dispatchers.Main) {
                                 if (result == "Sign Up Success") {
                                     clearErrors()
+                                    //shared preference
+                                    sharedPreferenceHelper.saveLoginStatus(true)
                                     Toast.makeText(this@CreateAccount, "Sign up Successful", Toast.LENGTH_SHORT).show()
                                     val intent = Intent(this@CreateAccount, Services::class.java)
                                     startActivity(intent)
@@ -110,6 +115,8 @@ class CreateAccount : AppCompatActivity() {
         // calls for the dropdown spinner
         dropDownSpinner()
     }
+
+
     private fun selectedRole(): String {
         val selectedRadioButtonId = radioGroupRole.checkedRadioButtonId
         val selectedRadioButton = findViewById<RadioButton>(selectedRadioButtonId)
@@ -176,6 +183,7 @@ class CreateAccount : AppCompatActivity() {
         }
         return true
     }
+
     private fun clearErrors() {
         fullName.error = null
         email.error = null

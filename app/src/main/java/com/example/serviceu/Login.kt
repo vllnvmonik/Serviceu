@@ -29,6 +29,7 @@ class Login : AppCompatActivity() {
         email = findViewById(R.id.email)
         password = findViewById(R.id.password)
 
+        val sharedPreferenceHelper = SharedPreferenceClass(this)
 
         backButton.setOnClickListener{
             val intent = Intent(this, LoginSignUp::class.java)
@@ -37,6 +38,7 @@ class Login : AppCompatActivity() {
 
         loginBtn.setOnClickListener {
             if (logInValidation()) {
+
                 val handler = Handler(Looper.getMainLooper())
                 handler.post {
                     // Starting Write and Read data with URL
@@ -56,6 +58,8 @@ class Login : AppCompatActivity() {
                             val result = putData.result
                             if (result.equals("Login Success")) {
                                 clearErrors()
+                                //shared preference
+                                sharedPreferenceHelper.saveLoginStatus(true)
                                 Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
                                 val intent = Intent(this, Services::class.java)
                                 startActivity(intent)
@@ -67,7 +71,6 @@ class Login : AppCompatActivity() {
                     }
                 }
             }
-
         }
     }
 
@@ -95,5 +98,4 @@ class Login : AppCompatActivity() {
         }
         return true
     }
-
 }

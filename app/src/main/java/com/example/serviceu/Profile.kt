@@ -22,6 +22,7 @@ class Profile : AppCompatActivity() {
         logoutBtn = findViewById(R.id.logout_btn)
         backButton = findViewById(R.id.back_button)
 
+
         backButton.setOnClickListener {
             val intent = Intent(this, Services::class.java)
             startActivity(intent)
@@ -41,20 +42,25 @@ class Profile : AppCompatActivity() {
 
         val confirmButton = dialog.findViewById(R.id.confirm_button) as Button
         val cancelButton = dialog.findViewById(R.id.cancel_button) as Button
+        val sharedPreferenceHelper = SharedPreferenceClass(this)
 
         confirmButton.setOnClickListener {
-            Toast.makeText(this,"Logged out", Toast.LENGTH_LONG).show()
-            val intent = Intent(this, LoginSignUp::class.java)
-            this.startActivity(intent)
-            finish()
-            dialog.dismiss()
+            if (sharedPreferenceHelper.getLoginStatus()){
+                sharedPreferenceHelper.saveLoginStatus(false)
+                Toast.makeText(this,"Logged out", Toast.LENGTH_LONG).show()
+                val intent = Intent(this, LoginSignUp::class.java)
+                this.startActivity(intent)
+                finish()
+                dialog.dismiss()
+            }
         }
-
         cancelButton.setOnClickListener {
-            Toast.makeText(this,"Cancelled", Toast.LENGTH_LONG).show()
-            dialog.dismiss()
+            if (sharedPreferenceHelper.getLoginStatus()) {
+                sharedPreferenceHelper.saveLoginStatus(true)
+                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show()
+                dialog.dismiss()
+            }
         }
         dialog.show()
     }
-
 }
