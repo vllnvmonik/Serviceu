@@ -31,11 +31,19 @@ class sp_profileAdapter(
             Toast.makeText(getActivity, profilelists[position].name, Toast.LENGTH_LONG).show()
         }
     }
+
+
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 //        val profilepic : ImageView = itemView.findViewById(R.id.img_profilepic)
         val name : TextView = itemView.findViewById(R.id.tv_spname)
         val category: TextView = itemView.findViewById(R.id.tv_sp_category)
         val contact : TextView = itemView.findViewById(R.id.tv_sp_number)
         val cardview : CardView = itemView.findViewById(R.id.cardview)
+    }
+
+    fun setData(newData: List<Sp_profile_holder>) {
+        profilelists.clear()
+        profilelists.addAll(newData)
+        notifyDataSetChanged()
     }
 }

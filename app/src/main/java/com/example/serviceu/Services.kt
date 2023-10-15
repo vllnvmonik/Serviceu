@@ -14,9 +14,13 @@ class Services : AppCompatActivity(), RVClick {
     private lateinit var imageList: Array <Int>
     private lateinit var titleList: Array <String>
     private lateinit var bottomNav: BottomNavigationView
+
+    private lateinit var selectedCategory:SelectedCategory
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_services)
+
+        selectedCategory = SelectedCategory("Null")
 
         bottomNav = findViewById(R.id.navmenu)
         bottomNav.setOnItemSelectedListener {
@@ -70,6 +74,7 @@ class Services : AppCompatActivity(), RVClick {
 
     }
 
+
     private fun getData(){
         for ( i in imageList.indices){
             val servicesClass = ServicesClass(imageList[i], titleList[i])
@@ -80,8 +85,22 @@ class Services : AppCompatActivity(), RVClick {
     }
 
     override fun rvCLick(position: Int) {
+        val category: String = when (position) {
+            0 -> "Laundry"
+            1 -> "Electrician"
+            2 -> "Cleaning"
+            3 -> "Pest Control"
+            4 -> "Plumber"
+            5 -> "Makeup Artist"
+            6 -> "Hairstylist"
+            7 -> "Mechanic"
+            8 -> "Manicure/Pedicure"
+            else -> "Null"
+        }
+        selectedCategory.selectedCategory = category
         Toast.makeText(this, "Item: $position is clicked", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, Sp_profile::class.java)
+        intent.putExtra("category", category)
         startActivity(intent)
     }
 
