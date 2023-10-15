@@ -1,15 +1,18 @@
 package com.example.serviceu
-import FetchData
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.serviceu.classes.FetchData
+import com.example.serviceu.classes.SelectedCategory
+import com.example.serviceu.classes.ServiceProviderProfileHolder
+import com.example.serviceu.classes.ServiceProviderProfileAdapter
 
-class Sp_profile : AppCompatActivity() {
+class ServiceProviderProfile : AppCompatActivity() {
     private lateinit var selectedCategory: SelectedCategory
     private var recyclerView: RecyclerView? = null
-    private var spProfileAdapter: sp_profileAdapter? = null
-    private var profileList = ArrayList<Sp_profile_holder>()
+    private var spProfileAdapter: ServiceProviderProfileAdapter? = null
+    private var profileList = ArrayList<ServiceProviderProfileHolder>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +21,7 @@ class Sp_profile : AppCompatActivity() {
         selectedCategory = SelectedCategory(intent.getStringExtra("category") ?: "Null")
 
         recyclerView = findViewById(R.id.rvprofileList)
-        spProfileAdapter = sp_profileAdapter(this, profileList)
+        spProfileAdapter = ServiceProviderProfileAdapter(this, profileList)
         recyclerView?.layoutManager = GridLayoutManager(this, 1)
         recyclerView?.adapter = spProfileAdapter
 

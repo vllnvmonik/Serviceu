@@ -1,4 +1,4 @@
-package com.example.serviceu
+package com.example.serviceu.classes
 
 import android.content.Context
 import android.content.SharedPreferences

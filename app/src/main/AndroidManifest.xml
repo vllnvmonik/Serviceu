@@ -23,7 +23,7 @@
             android:name=".BookingsCustomer"
             android:exported="false" />
         <activity
-            android:name=".Sp_profile"
+            android:name=".ServiceProviderProfile"
             android:exported="false" />
         <activity
             android:name=".CreateAccount"

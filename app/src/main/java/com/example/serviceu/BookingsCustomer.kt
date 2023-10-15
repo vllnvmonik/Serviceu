@@ -6,6 +6,8 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.serviceu.classes.BookingsAdapterClass
+import com.example.serviceu.classes.BookingsClass
 
 class BookingsCustomer : AppCompatActivity() {
 

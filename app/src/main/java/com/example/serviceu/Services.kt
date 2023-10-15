@@ -2,10 +2,13 @@ package com.example.serviceu
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.serviceu.classes.RVClick
+import com.example.serviceu.classes.SelectedCategory
+import com.example.serviceu.classes.ServicesAdapterClass
+import com.example.serviceu.classes.ServicesClass
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class Services : AppCompatActivity(), RVClick {
@@ -15,7 +18,7 @@ class Services : AppCompatActivity(), RVClick {
     private lateinit var titleList: Array <String>
     private lateinit var bottomNav: BottomNavigationView
 
-    private lateinit var selectedCategory:SelectedCategory
+    private lateinit var selectedCategory: SelectedCategory
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_services)
@@ -98,8 +101,7 @@ class Services : AppCompatActivity(), RVClick {
             else -> "Null"
         }
         selectedCategory.selectedCategory = category
-        Toast.makeText(this, "Item: $position is clicked", Toast.LENGTH_SHORT).show()
-        val intent = Intent(this, Sp_profile::class.java)
+        val intent = Intent(this, ServiceProviderProfile::class.java)
         intent.putExtra("category", category)
         startActivity(intent)
     }

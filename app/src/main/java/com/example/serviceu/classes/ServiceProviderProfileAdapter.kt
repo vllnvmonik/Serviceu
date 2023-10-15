@@ -1,4 +1,4 @@
-package com.example.serviceu
+package com.example.serviceu.classes
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,12 +7,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.serviceu.R
+import com.example.serviceu.ServiceProviderProfile
 
-class sp_profileAdapter(
-    private val getActivity: Sp_profile,
-    private val profilelists: MutableList<Sp_profile_holder>
+class ServiceProviderProfileAdapter(
+    private val getActivity: ServiceProviderProfile,
+    private val profilelists: MutableList<ServiceProviderProfileHolder>
 ) :
-    RecyclerView.Adapter<sp_profileAdapter.MyViewHolder>() {
+    RecyclerView.Adapter<ServiceProviderProfileAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val  view = LayoutInflater.from(parent.context).inflate(R.layout.spprof_recyclerview_layout,parent, false)
@@ -41,7 +43,7 @@ class sp_profileAdapter(
         val cardview : CardView = itemView.findViewById(R.id.cardview)
     }
 
-    fun setData(newData: List<Sp_profile_holder>) {
+    fun setData(newData: List<ServiceProviderProfileHolder>) {
         profilelists.clear()
         profilelists.addAll(newData)
         notifyDataSetChanged()

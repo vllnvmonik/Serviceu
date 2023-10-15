@@ -5,7 +5,7 @@
     android:id="@+id/Recylerview_for_sp_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Sp_profile">
+    tools:context=".ServiceProviderProfile">
 
     <TextView
         android:id="@+id/tv_serviceproviders"

@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.serviceu.classes.SharedPreferenceClass
 
 class Profile : AppCompatActivity() {
     private lateinit var logoutBtn: Button

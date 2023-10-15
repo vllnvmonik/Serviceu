@@ -1,4 +1,4 @@
-package com.example.serviceu
+package com.example.serviceu.classes
 
 interface RVClick {
     fun rvCLick(position: Int)

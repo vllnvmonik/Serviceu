@@ -1,7 +1,7 @@
+package com.example.serviceu.classes
+
 import android.app.Activity
 import android.content.Context
-import com.example.serviceu.Sp_profile_holder
-import com.example.serviceu.sp_profileAdapter
 import org.json.JSONArray
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -13,8 +13,8 @@ class FetchData {
     companion object {
         fun fetchAndDisplayData(
             context: Context,
-            adapter: sp_profileAdapter?,
-            profileList: ArrayList<Sp_profile_holder>,
+            adapter: ServiceProviderProfileAdapter?,
+            profileList: ArrayList<ServiceProviderProfileHolder>,
             selectedCategory: String
         ) {
             val url = "https://serviceuapp.000webhostapp.com/fetch.php"
@@ -45,10 +45,10 @@ class FetchData {
 
         private fun parseAndFilterData(
             response: String,
-            profileList: ArrayList<Sp_profile_holder>,
+            profileList: ArrayList<ServiceProviderProfileHolder>,
             selectedCategory: String
-        ): List<Sp_profile_holder> {
-            val filteredData = ArrayList<Sp_profile_holder>()
+        ): List<ServiceProviderProfileHolder> {
+            val filteredData = ArrayList<ServiceProviderProfileHolder>()
 
             try {
                 val jsonArray = JSONArray(response)
@@ -60,7 +60,7 @@ class FetchData {
                     val contact = jsonObject.getString("phone")
 
                     if (category == selectedCategory) {
-                        val profile = Sp_profile_holder(name, category, contact)
+                        val profile = ServiceProviderProfileHolder(name, category, contact)
                         filteredData.add(profile)
                     }
                 }
