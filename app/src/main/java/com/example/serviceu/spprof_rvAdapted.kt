@@ -3,7 +3,6 @@ package com.example.serviceu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
@@ -23,17 +22,17 @@ class sp_profileAdapter(
         return profilelists.size
     }
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.name.text = profilelists[position].title
-        holder.profilepic.setImageResource( profilelists[position].img1)
+        holder.name.text = profilelists[position].name
+//        holder.profilepic.setImageResource( profilelists[position].img1)
         holder.category.text = profilelists[position].category
-        holder.contact.text = profilelists[position].rad
+        holder.contact.text = profilelists[position].contact
 
         holder.cardview.setOnClickListener{
-            Toast.makeText(getActivity, profilelists[position].title, Toast.LENGTH_LONG).show()
+            Toast.makeText(getActivity, profilelists[position].name, Toast.LENGTH_LONG).show()
         }
     }
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val profilepic : ImageView = itemView.findViewById(R.id.img_profilepic)
+//        val profilepic : ImageView = itemView.findViewById(R.id.img_profilepic)
         val name : TextView = itemView.findViewById(R.id.tv_spname)
         val category: TextView = itemView.findViewById(R.id.tv_sp_category)
         val contact : TextView = itemView.findViewById(R.id.tv_sp_number)

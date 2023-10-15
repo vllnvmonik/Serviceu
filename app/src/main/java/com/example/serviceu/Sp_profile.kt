@@ -1,48 +1,73 @@
 package com.example.serviceu
-
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import org.json.JSONArray
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.net.HttpURLConnection
+import java.net.URL
 
 class Sp_profile : AppCompatActivity() {
-
     private var recyclerView: RecyclerView? = null
-    private var spProfileadapter: sp_profileAdapter? = null
-    private var profileList = mutableListOf<Sp_profile_holder>()
+    private var spProfileAdapter: sp_profileAdapter? = null
+    private var profileList = ArrayList<Sp_profile_holder>()
 
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sp_profile)
 
-        profileList = ArrayList()
+        recyclerView = findViewById(R.id.rvprofileList)
+        spProfileAdapter = sp_profileAdapter(this, profileList)
+        recyclerView?.layoutManager = GridLayoutManager(this, 1)
+        recyclerView?.adapter = spProfileAdapter
 
-        recyclerView = findViewById<View>(R.id.rvprofileList) as RecyclerView
-        spProfileadapter = sp_profileAdapter(this@Sp_profile, profileList)
-        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, 1)
-        recyclerView!!.layoutManager = layoutManager
-        recyclerView!!.adapter = spProfileadapter
-
-        prepareProfileListData()
-
-
+        fetchDataAndSetData()
     }
 
-    private fun prepareProfileListData() {
-        var profile = Sp_profile_holder("MONICA", R.drawable.baseline_person_outline_24,"Tagalaba","095652332")
-        profileList.add(profile)
-        profile = Sp_profile_holder("glaiza maylan", R.drawable.baseline_person_outline_24, "Tagalaba", "099129391")
-        profileList.add(profile)
-        profile = Sp_profile_holder("monica dikoalam",R.drawable.baseline_person_outline_24,"Tagalaba","4124142e")
-        profileList.add(profile)
-        profile = Sp_profile_holder("vinna diko alam",R.drawable.baseline_person_outline_24,"Tagalaba","3267487238")
-        profileList.add(profile)
-        profile = Sp_profile_holder("sige diko alam",R.drawable.baseline_person_outline_24,"Tagalaba","123127372")
-        profileList.add(profile)
-        profile = Sp_profile_holder("talaga",R.drawable.baseline_person_outline_24,"Tagalaba","124124124")
-        profileList.add(profile)
+    private fun fetchDataAndSetData() {
+        val url = "https://serviceuapp.000webhostapp.com/fetch.php"
+
+        Thread {
+            try {
+                val urlConnection = URL(url).openConnection() as HttpURLConnection
+                val reader = BufferedReader(InputStreamReader(urlConnection.inputStream))
+                val response = StringBuilder()
+
+                var line: String?
+                while (reader.readLine().also { line = it } != null) {
+                    response.append(line)
+                }
+
+                runOnUiThread {
+                    // Parse and display data in the RecyclerView
+                    parseAndDisplayData(response.toString())
+                }
+
+                urlConnection.disconnect()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }.start()
+    }
+
+    private fun parseAndDisplayData(response: String) {
+        try {
+            val jsonArray = JSONArray(response)
+
+            for (i in 0 until jsonArray.length()) {
+                val jsonObject = jsonArray.getJSONObject(i)
+                val name = jsonObject.getString("fullname")
+                val category = jsonObject.getString("category")
+                val contact = jsonObject.getString("phone")
+
+                val profile = Sp_profile_holder(name, category, contact)
+                profileList.add(profile)
+            }
+            spProfileAdapter?.notifyDataSetChanged()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 }
