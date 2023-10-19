@@ -136,7 +136,7 @@ class Profile : AppCompatActivity() {
                             withContext(Dispatchers.Main) {
                                 userFullname.text = fullname
                                 userEmail.text = email
-                                userPhone.text = phone
+                                userPhone.text = "+63$phone"
                                 userAddress.text = address
                             }
                         }
