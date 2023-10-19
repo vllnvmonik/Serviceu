@@ -16,4 +16,15 @@ class SharedPreferenceClass (private val context: Context){
     fun getLoginStatus(): Boolean {
         return sharedPreferences.getBoolean("isLoggedIn", false)
     }
+
+    //
+    fun saveSessionToken(token: String?) {
+        val editor = sharedPreferences.edit()
+        editor.putString("sessionToken", token)
+        editor.apply()
+    }
+
+    fun getSessionToken(): String? {
+        return sharedPreferences.getString("sessionToken", null)
+    }
 }

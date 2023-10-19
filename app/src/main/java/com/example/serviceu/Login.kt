@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -12,6 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.serviceu.classes.SharedPreferenceClass
 import com.vishnusivadas.advanced_httpurlconnection.PutData
+import java.util.UUID
 
 class Login : AppCompatActivity() {
 
@@ -32,6 +34,7 @@ class Login : AppCompatActivity() {
 
         val sharedPreferenceHelper = SharedPreferenceClass(this)
 
+
         backButton.setOnClickListener{
             val intent = Intent(this, LoginSignUp::class.java)
             startActivity(intent)
@@ -42,26 +45,35 @@ class Login : AppCompatActivity() {
 
                 val handler = Handler(Looper.getMainLooper())
                 handler.post {
-                    // Starting Write and Read data with URL
-                    // Creating array for parameters
-                    val field = arrayOfNulls<String>(2)
+
+                    // stores the generated token
+                    val sessionToken = generateSessionToken()
+
+                    // creating array for parameters
+                    val field = arrayOfNulls<String>(3)
                     field[0] = "email"
                     field[1] = "password"
+                    field[2] = "token"
 
-                    // Creating array for data
-                    val data = arrayOfNulls<String>(2)
+                    // creating array for data
+                    val data = arrayOfNulls<String>(3)
                     data[0] = email.text.toString()
                     data[1] = password.text.toString()
+                    data[2] = sessionToken
 
+                    // starting Write and Read data with URL
                     val putData = PutData("https://serviceuapp.000webhostapp.com/login.php", "POST", field, data)
 
                     if (putData.startPut()) {
                         if (putData.onComplete()) {
                             val result = putData.result
-                            if (result.equals("Login Success")) {
+                            if (result == "Login Success") {
                                 clearErrors()
-                                //shared preference
+                                // true, logged in user
                                 sharedPreferenceHelper.saveLoginStatus(true)
+                                // token for checking if user is logged in
+                                sharedPreferenceHelper.saveSessionToken(sessionToken)
+
                                 Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
                                 val intent = Intent(this, Services::class.java)
                                 startActivity(intent)
@@ -74,6 +86,13 @@ class Login : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun generateSessionToken(): String {
+        // Generate a unique session token (you can use UUID or any other method)
+        val sessionToken = UUID.randomUUID().toString()
+        Log.d("SessionToken", "Generated session token: $sessionToken")
+        return sessionToken
     }
 
     private fun clearErrors() {

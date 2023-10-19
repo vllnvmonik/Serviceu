@@ -15,7 +15,6 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.serviceu.classes.SharedPreferenceClass
 import com.vishnusivadas.advanced_httpurlconnection.PutData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -61,7 +60,6 @@ class CreateAccount : AppCompatActivity() {
         radioCustomer = findViewById(R.id.rb_customer)
         radioProvider = findViewById(R.id.rb_serviceProvider)
 
-        val sharedPreferenceHelper = SharedPreferenceClass(this)
 
         // buttons functionalities
         backButton.setOnClickListener {
@@ -76,7 +74,7 @@ class CreateAccount : AppCompatActivity() {
         }
         btCreate.setOnClickListener{
             if (signUpValidation()){
-                // Use Coroutines to perform the network request in the background
+                // perform the network request in the background
                 CoroutineScope(Dispatchers.IO).launch {
 
                     val field = arrayOf("fullname", "email", "phone", "address", "role", "password", "category")
@@ -98,10 +96,8 @@ class CreateAccount : AppCompatActivity() {
                             withContext(Dispatchers.Main) {
                                 if (result == "Sign Up Success") {
                                     clearErrors()
-                                    //shared preference
-                                    sharedPreferenceHelper.saveLoginStatus(true)
                                     Toast.makeText(this@CreateAccount, "Sign up Successful", Toast.LENGTH_SHORT).show()
-                                    val intent = Intent(this@CreateAccount, Services::class.java)
+                                    val intent = Intent(this@CreateAccount, Login::class.java)
                                     startActivity(intent)
                                     finish()
                                 } else {
