@@ -50,6 +50,7 @@ class Profile : AppCompatActivity() {
         backButton.setOnClickListener {
             val intent = Intent(this, Services::class.java)
             startActivity(intent)
+            finish()
         }
 
         logoutBtn.setOnClickListener {

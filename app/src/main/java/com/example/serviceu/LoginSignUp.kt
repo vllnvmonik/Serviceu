@@ -28,9 +28,5 @@ class LoginSignUp : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
-
     }
-
-
 }

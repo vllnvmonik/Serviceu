@@ -38,6 +38,7 @@ class Login : AppCompatActivity() {
         backButton.setOnClickListener{
             val intent = Intent(this, LoginSignUp::class.java)
             startActivity(intent)
+            finish()
         }
 
         loginBtn.setOnClickListener {
@@ -50,16 +51,12 @@ class Login : AppCompatActivity() {
                     val sessionToken = generateSessionToken()
 
                     // creating array for parameters
-                    val field = arrayOfNulls<String>(3)
-                    field[0] = "email"
-                    field[1] = "password"
-                    field[2] = "token"
+                    val field = arrayOf("email", "password", "token")
 
                     // creating array for data
-                    val data = arrayOfNulls<String>(3)
-                    data[0] = email.text.toString()
-                    data[1] = password.text.toString()
-                    data[2] = sessionToken
+                    val data = arrayOf(email.text.toString(),
+                        password.text.toString(),
+                        sessionToken)
 
                     // starting Write and Read data with URL
                     val putData = PutData("https://serviceuapp.000webhostapp.com/login.php", "POST", field, data)
@@ -88,8 +85,8 @@ class Login : AppCompatActivity() {
         }
     }
 
+    // this create a random strings
     private fun generateSessionToken(): String {
-        // Generate a unique session token (you can use UUID or any other method)
         val sessionToken = UUID.randomUUID().toString()
         Log.d("SessionToken", "Generated session token: $sessionToken")
         return sessionToken

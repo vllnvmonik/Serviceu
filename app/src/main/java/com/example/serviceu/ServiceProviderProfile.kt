@@ -39,6 +39,8 @@ class ServiceProviderProfile : AppCompatActivity() {
         val currentCategory = selectedCategory.selectedCategory
         FetchData.fetchAndDisplayData(this, spProfileAdapter, profileList, currentCategory)
 
+
+
 //        if (currentCategory == "null"){
 //            Toast.makeText(this, "No detail", Toast.LENGTH_LONG).show()
 //        }
