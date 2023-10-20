@@ -8,7 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceu.R
 
-class ServicesAdapterClass(private val servicesList: ArrayList<ServicesClass>, private val rvClick: RVClick): RecyclerView.Adapter<ServicesAdapterClass.ViewHolderClass>(){
+class ServicesAdapterClass(private val servicesList: ArrayList<ServicesClass>,
+                           private val rvClick: RVClick): RecyclerView.Adapter<ServicesAdapterClass.ViewHolderClass>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderClass {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.services_layout, parent, false)

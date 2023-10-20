@@ -104,6 +104,7 @@ class Services : AppCompatActivity(), RVClick {
         val intent = Intent(this, ServiceProviderProfile::class.java)
         intent.putExtra("category", category)
         startActivity(intent)
+        finish()
     }
 
 }

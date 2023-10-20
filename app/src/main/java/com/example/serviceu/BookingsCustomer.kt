@@ -1,8 +1,10 @@
 package com.example.serviceu
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,12 +21,19 @@ class BookingsCustomer : AppCompatActivity() {
     private lateinit var date: Array<String>
     private lateinit var time: Array<String>
     private lateinit var status: Array<String>
+    private lateinit var serviceBooked: TextView
+    private lateinit var dateBooked: TextView
+    private lateinit var timeBooked: TextView
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bookings_customer)
 
+
+
         backButton = findViewById(R.id.back_button)
+
         backButton.setOnClickListener{
             val intent = Intent(this, Services::class.java)
             startActivity(intent)
@@ -34,16 +43,17 @@ class BookingsCustomer : AppCompatActivity() {
 
         // recycler view
         imageList = arrayListOf(
-            R.drawable.laundry
+            R.drawable.logo
         )
         titleList = arrayOf(
             "Laundry",
             "Electrician",
             "Cleaning")
+        date = arrayOf("Oct 1, 2023")
+        time = arrayOf("10:00 AM")
+        status = arrayOf("pending")
 
-        date = arrayOf("Jan 23, 2022")
-        time = arrayOf("12:00")
-        status = arrayOf("PENDING")
+
 
         recyclerView = findViewById(R.id.rv_bookings)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -51,7 +61,22 @@ class BookingsCustomer : AppCompatActivity() {
 
         bookingsList = arrayListOf()
 
+//        getBookDetails()
+
         getData()
+    }
+    fun getBookDetails(){
+        val providerService = intent.getStringExtra("providerService")
+        val selectedDate = intent.getStringExtra("selectedDate")
+        val selectedTime = intent.getStringExtra("selectedTime")
+
+        serviceBooked = findViewById(R.id.type_of_service_booked)
+        dateBooked = findViewById(R.id.tv_date)
+        timeBooked = findViewById(R.id.tv_time)
+
+        serviceBooked.text = providerService
+        dateBooked.text = selectedDate
+        timeBooked.text = selectedTime
     }
     private fun getData(){
         for ( i in imageList.indices){

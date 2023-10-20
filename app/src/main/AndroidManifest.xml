@@ -29,7 +29,7 @@
             android:name=".CreateAccount"
             android:exported="false" />
         <activity
-            android:name=".Address"
+            android:name=".Book"
             android:exported="false" />
         <activity
             android:name=".Services"

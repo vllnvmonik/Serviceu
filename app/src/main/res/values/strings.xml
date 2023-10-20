@@ -45,4 +45,8 @@
     <string name="service_providers">Service Providers</string>
     <string name="select_category">Select Category</string>
     <string name="category">Category</string>
+    <string name="book">Book</string>
+    <string name="service">Service</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
 </resources>
