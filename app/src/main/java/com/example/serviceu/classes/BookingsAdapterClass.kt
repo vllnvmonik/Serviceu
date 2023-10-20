@@ -8,10 +8,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceu.R
 
-class BookingsAdapterClass (private val bookingsList: ArrayList<BookingsClass>): RecyclerView.Adapter<BookingsAdapterClass.ViewHolderClass>() {
+class BookingsAdapterClass (
+    private val bookingsList: ArrayList<BookingsClass>
+): RecyclerView.Adapter<BookingsAdapterClass.ViewHolderClass>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderClass {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.bookings_layout, parent, false)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.bookings_layout, parent, false)
         return ViewHolderClass(itemView)
     }
 
@@ -25,16 +28,22 @@ class BookingsAdapterClass (private val bookingsList: ArrayList<BookingsClass>):
         holder.rvTitleHolder.text = currentItem.serviceTitle
         holder.rvDateHolder.text = currentItem.date
         holder.rvTimeHolder.text = currentItem.time
-        holder.rvStatusHolder.text = currentItem.status
+//        holder.rvStatusHolder.text = currentItem.status
     }
 
 
-    class ViewHolderClass (itemView: View): RecyclerView.ViewHolder(itemView){
+    class ViewHolderClass(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val rvImageHolder: ImageView = itemView.findViewById(R.id.img_bookings)
-        val rvTitleHolder: TextView = itemView.findViewById(R.id.type_of_service_booked)
+        val rvTitleHolder: TextView = itemView.findViewById(R.id.tv_service_booked)
         val rvDateHolder: TextView = itemView.findViewById(R.id.tv_date)
         val rvTimeHolder: TextView = itemView.findViewById(R.id.tv_time)
-        val rvStatusHolder: TextView = itemView.findViewById(R.id.booking_status)
+//        val rvStatusHolder: TextView = itemView.findViewById(R.id.booking_status)
 
+    }
+
+    fun setData(newData: List<BookingsClass>) {
+        bookingsList.clear()
+        bookingsList.addAll(newData)
+        notifyDataSetChanged()
     }
 }

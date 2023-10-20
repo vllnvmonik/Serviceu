@@ -27,4 +27,14 @@ class SharedPreferenceClass (private val context: Context){
     fun getSessionToken(): String? {
         return sharedPreferences.getString("sessionToken", null)
     }
+
+    fun saveUserId(userId: Int){
+        val editor = sharedPreferences.edit()
+        editor.putInt("userId", userId)
+        editor.apply()
+    }
+
+    fun getUserId(): Int{
+        return sharedPreferences.getInt("userId", -1)
+    }
 }

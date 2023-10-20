@@ -13,6 +13,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.serviceu.classes.SharedPreferenceClass
 import com.vishnusivadas.advanced_httpurlconnection.PutData
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.json.JSONObject
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.net.HttpURLConnection
+import java.net.URL
 import java.util.UUID
 
 class Login : AppCompatActivity() {
@@ -21,6 +30,7 @@ class Login : AppCompatActivity() {
     private lateinit var loginBtn: Button
     private lateinit var email: EditText
     private lateinit var password: EditText
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +59,6 @@ class Login : AppCompatActivity() {
 
                     // stores the generated token
                     val sessionToken = generateSessionToken()
-
                     // creating array for parameters
                     val field = arrayOf("email", "password", "token")
 
@@ -70,7 +79,7 @@ class Login : AppCompatActivity() {
                                 sharedPreferenceHelper.saveLoginStatus(true)
                                 // token for checking if user is logged in
                                 sharedPreferenceHelper.saveSessionToken(sessionToken)
-
+                                getUserInfo()
                                 Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
                                 val intent = Intent(this, Services::class.java)
                                 startActivity(intent)
@@ -84,6 +93,66 @@ class Login : AppCompatActivity() {
             }
         }
     }
+
+    private fun getUserInfo() {
+        // Retrieve the session token using SharedPreferenceClass
+        val sharedPreferenceHelper = SharedPreferenceClass(this)
+        val sessionToken = sharedPreferenceHelper.getSessionToken()
+
+        if (sessionToken != null) {
+            GlobalScope.launch(Dispatchers.IO) {
+                try {
+                    val apiUrl = "https://serviceuapp.000webhostapp.com/userinfo.php?token=$sessionToken"
+                    val url = URL(apiUrl)
+                    val connection = url.openConnection() as HttpURLConnection
+                    connection.requestMethod = "GET"
+
+                    val responseCode = connection.responseCode
+                    if (responseCode == HttpURLConnection.HTTP_OK) {
+                        val reader = BufferedReader(InputStreamReader(connection.inputStream))
+                        val response = StringBuilder()
+                        var line: String?
+
+                        while (reader.readLine().also { line = it } != null) {
+                            response.append(line)
+                        }
+
+                        // parse the JSON response
+                        val userInfo = JSONObject(response.toString())
+
+                        if (userInfo.has("user_id")) {
+                            // retrieve user ID
+                            val userId = userInfo.getInt("user_id")
+
+                            sharedPreferenceHelper.saveUserId(userId)
+                            Log.d("Profile", "User ID: $userId")
+
+                            withContext(Dispatchers.Main) {
+                            }
+                        } else {
+                            showToast("User ID not found in response")
+                        }
+                    } else {
+                        showToast("Failed to fetch user info. Response code: $responseCode")
+                    }
+
+                    connection.disconnect()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    showToast("An error occurred: ${e.message}")
+                }
+            }
+        } else {
+            showToast("Session token is null")
+        }
+    }
+
+    private fun showToast(message: String) {
+        runOnUiThread {
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        }
+    }
+
 
     // this create a random strings
     private fun generateSessionToken(): String {

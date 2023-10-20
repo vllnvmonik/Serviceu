@@ -5,14 +5,24 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.TimePicker
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.serviceu.classes.SharedPreferenceClass
+import com.vishnusivadas.advanced_httpurlconnection.PutData
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 import java.util.Locale
 
 class Book : AppCompatActivity(),DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
@@ -36,6 +46,8 @@ class Book : AppCompatActivity(),DatePickerDialog.OnDateSetListener, TimePickerD
     private lateinit var service: TextView
     private lateinit var backButton: ImageView
     private lateinit var proceedButton: Button
+    private var selectedDateTime: Date? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book)
@@ -48,6 +60,7 @@ class Book : AppCompatActivity(),DatePickerDialog.OnDateSetListener, TimePickerD
         backButton = findViewById(R.id.back_button)
         proceedButton = findViewById(R.id.btn_proceed)
 
+        val sharedPreferenceHelper = SharedPreferenceClass(this)
 
         backButton.setOnClickListener {
             val intent = Intent(this, Services::class.java)
@@ -56,17 +69,41 @@ class Book : AppCompatActivity(),DatePickerDialog.OnDateSetListener, TimePickerD
         }
 
         proceedButton.setOnClickListener {
-//            val providerService = service.text.toString()
-//            val selectedDate = tv_dateDisplay.text.toString()
-//            val selectedTime = tv_timeDisplay.text.toString()
-//
-//            val intent = Intent(this, BookingsCustomer::class.java)
-//            intent.putExtra("providerService", providerService)
-//            intent.putExtra("selectedDate", selectedDate)
-//            intent.putExtra("selectedTime", selectedTime)
-//            startActivity(intent)
-        }
+            if (dateTimeValidation()){
+                CoroutineScope(Dispatchers.IO).launch {
 
+                    val userId = sharedPreferenceHelper.getUserId()
+                    Log.d("USERID", userId.toString())
+                    val field = arrayOf("userId", "providerName", "providerService", "bookingDate", "bookingTime")
+                    val data = arrayOf(
+                        userId.toString(),
+                        name.text.toString(),
+                        service.text.toString(),
+                        tv_dateDisplay.text.toString(),
+                        tv_timeDisplay.text.toString()
+                    )
+
+                    val putData = PutData("https://serviceuapp.000webhostapp.com/bookings.php", "POST", field, data)
+                    if (putData.startPut()) {
+                        if (putData.onComplete()) {
+                            val result = putData.result
+                            withContext(Dispatchers.Main) {
+                                if (result == "Booking Successful") {
+
+                                    Toast.makeText(this@Book, "Booking Successful", Toast.LENGTH_SHORT).show()
+                                    val intent = Intent(this@Book, Services::class.java)
+                                    startActivity(intent)
+                                    finish()
+                                } else {
+                                    Toast.makeText(this@Book, "Booking Failed", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
         getSpDetails()
 
         pickDate()
@@ -131,7 +168,43 @@ class Book : AppCompatActivity(),DatePickerDialog.OnDateSetListener, TimePickerD
             amPm = "AM"
             formattedHour = if (savedHour==0) 12 else savedHour
         }
+        val formattedMinute = String.format(Locale.getDefault(), "%02d", savedMinute)
+        tv_timeDisplay.text = "$formattedHour:$formattedMinute $amPm"
+    }
 
-        tv_timeDisplay.text = "$formattedHour:$savedMinute $amPm"
+    private fun dateTimeValidation(): Boolean {
+        val selectDate = tv_dateDisplay.text.toString()
+        val selectTime = tv_timeDisplay.text.toString()
+
+        if (selectDate.isEmpty() || selectTime.isEmpty()) {
+            Toast.makeText(this, "Please select a date and time to book", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        val dateTimeString = "$selectDate $selectTime"
+        val dateFormat = SimpleDateFormat("MMM d, yyyy h:mm a", Locale.getDefault())
+
+        try {
+            val selectedDate = dateFormat.parse(dateTimeString)
+
+            if (selectedDate != null) {
+                val currentDate = Calendar.getInstance().time
+
+                if (selectedDate.before(currentDate)) {
+                    Toast.makeText(this, "Please select a future date and time to book", Toast.LENGTH_SHORT).show()
+                    return false
+                }
+
+                selectedDateTime = selectedDate
+            } else {
+                Toast.makeText(this, "Invalid date and time format", Toast.LENGTH_SHORT).show()
+                return false
+            }
+        } catch (e: ParseException) {
+            Toast.makeText(this, "Please select date and time", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        return true
     }
 }
