@@ -80,10 +80,23 @@ class Login : AppCompatActivity() {
                                 // token for checking if user is logged in
                                 sharedPreferenceHelper.saveSessionToken(sessionToken)
                                 getUserInfo()
-                                Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
-                                val intent = Intent(this, Services::class.java)
-                                startActivity(intent)
-                                finish()
+                                when (sharedPreferenceHelper.getUserRole()) {
+                                    "Customer" -> {
+                                        Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
+                                        val intent = Intent(this, Services::class.java)
+                                        startActivity(intent)
+                                        finish()
+                                    }
+                                    "Service Provider" -> {
+                                        Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
+                                        val intent = Intent(this, ServiceProviderInterface::class.java)
+                                        startActivity(intent)
+                                        finish()
+                                    }
+                                    else -> {
+                                        Toast.makeText(this, "No role", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
                             } else {
                                 Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
                             }

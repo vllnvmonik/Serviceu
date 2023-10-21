@@ -61,6 +61,8 @@ class FetchData {
                     val contact = jsonObject.getString("phone")
                     val userId = jsonObject.getInt("user_id")
 
+
+
                     if (category == selectedCategory) {
                         val profile = ServiceProviderProfileHolder(name, category, contact, userId)
                         filteredData.add(profile)
@@ -106,7 +108,6 @@ class FetchData {
         private fun parseAndFilterBookingsData(response: String):
                 List<BookingsClass> {
             val filteredData = ArrayList<BookingsClass>()
-
             try {
                 val jsonArray = JSONArray(response)
 
@@ -169,8 +170,9 @@ class FetchData {
                     val bookedService = jsonObject.getString("bookedservice")
                     val date = jsonObject.getString("date")
                     val time = jsonObject.getString("time")
+                    val bookId = jsonObject.getInt("book_id")
 
-                    val booking = ServiceProviderBookingClass(R.drawable.logo1, customerName, bookedService, date, time)
+                    val booking = ServiceProviderBookingClass(R.drawable.logo1, customerName, bookedService, date, time, bookId)
                     filteredData.add(booking)
                 }
             } catch (e: Exception) {

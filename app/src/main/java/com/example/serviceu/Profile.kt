@@ -31,6 +31,7 @@ class Profile : AppCompatActivity() {
     private lateinit var userEmail: TextView
     private lateinit var userPhone: TextView
     private lateinit var userAddress: TextView
+    private lateinit var sharedPreferenceHelper: SharedPreferenceClass
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,13 +45,27 @@ class Profile : AppCompatActivity() {
         userPhone = findViewById(R.id.userPhone)
         userAddress = findViewById(R.id.userAddress)
 
+        sharedPreferenceHelper = SharedPreferenceClass(this)
+
         // call the function request
         getUserInfo()
 
         backButton.setOnClickListener {
-            val intent = Intent(this, Services::class.java)
-            startActivity(intent)
-            finish()
+            when (sharedPreferenceHelper.getUserRole()) {
+                "Customer" -> {
+                    val intent = Intent(this, Services::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                "Service Provider" -> {
+                    val intent = Intent(this, ServiceProviderInterface::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                else -> {
+                    Toast.makeText(this, "No role", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
 
         logoutBtn.setOnClickListener {

@@ -65,4 +65,13 @@ class SharedPreferenceClass (private val context: Context){
         return sharedPreferences.getString("userFullName", null)
     }
 
+    fun saveBookId(bookId: Int){
+        val editor = sharedPreferences.edit()
+        editor.putInt("providerId", bookId)
+        editor.apply()
+    }
+    fun getBookId(): Int{
+        return sharedPreferences.getInt("bookId", -1)
+    }
+
 }

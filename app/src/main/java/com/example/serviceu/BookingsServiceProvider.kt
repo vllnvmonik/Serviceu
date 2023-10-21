@@ -28,12 +28,12 @@ class BookingsServiceProvider : AppCompatActivity() {
         backButton = findViewById(R.id.back_button)
 
         backButton.setOnClickListener {
-            val intent = Intent(this, Services::class.java)
+            val intent = Intent(this, ServiceProviderInterface::class.java)
             startActivity(intent)
             finish()
         }
 
-        serviceBookingsAdapter = ServiceProviderBookingsAdapter(serviceBookingsList)
+        serviceBookingsAdapter = ServiceProviderBookingsAdapter(this, serviceBookingsList)
 
         recyclerView?.adapter = serviceBookingsAdapter
 
