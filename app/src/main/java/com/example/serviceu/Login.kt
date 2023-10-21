@@ -120,12 +120,16 @@ class Login : AppCompatActivity() {
                         // parse the JSON response
                         val userInfo = JSONObject(response.toString())
 
-                        if (userInfo.has("user_id")) {
+                        if (userInfo.has("user_id") && userInfo.has("role")) {
                             // retrieve user ID
                             val userId = userInfo.getInt("user_id")
-
                             sharedPreferenceHelper.saveUserId(userId)
                             Log.d("Profile", "User ID: $userId")
+
+                            val userRole = userInfo.getString("role")
+                            sharedPreferenceHelper.saveUserRole(userRole)
+                            Log.d("Profile", "User Role: $userRole")
+
 
                             withContext(Dispatchers.Main) {
                             }

@@ -37,4 +37,14 @@ class SharedPreferenceClass (private val context: Context){
     fun getUserId(): Int{
         return sharedPreferences.getInt("userId", -1)
     }
+
+    fun saveUserRole(userRole:String){
+        val editor = sharedPreferences.edit()
+        editor.putString("userRole", userRole)
+        editor.apply()
+    }
+    fun getUserRole():String?{
+        return sharedPreferences.getString("userRole", null)
+    }
+
 }

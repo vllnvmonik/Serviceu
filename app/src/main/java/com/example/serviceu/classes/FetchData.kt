@@ -10,8 +10,8 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 class FetchData {
-
     companion object {
+
         fun fetchAndDisplayData(
             context: Context,
             adapter: ServiceProviderProfileAdapter?,
@@ -49,7 +49,6 @@ class FetchData {
             selectedCategory: String
         ): List<ServiceProviderProfileHolder> {
             val filteredData = ArrayList<ServiceProviderProfileHolder>()
-
             try {
                 val jsonArray = JSONArray(response)
 
@@ -106,12 +105,13 @@ class FetchData {
 
                 for (i in 0 until jsonArray.length()) {
                     val jsonObject = jsonArray.getJSONObject(i)
+                    val providerName = jsonObject.getString("provider_name")
                     val serviceName = jsonObject.getString("bookedservice")
                     val date = jsonObject.getString("date")
                     val time = jsonObject.getString("time")
-//                    val status = jsonObject.getString("status")
+                    val status = jsonObject.getString("status")
 
-                    val booking = BookingsClass(R.drawable.logo1, serviceName, date,time)
+                    val booking = BookingsClass(R.drawable.logo1, providerName, serviceName, date,time, status)
                     filteredData.add(booking)
                 }
             } catch (e: Exception) {

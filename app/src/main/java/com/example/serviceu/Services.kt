@@ -2,6 +2,7 @@ package com.example.serviceu
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -9,6 +10,7 @@ import com.example.serviceu.classes.RVClick
 import com.example.serviceu.classes.SelectedCategory
 import com.example.serviceu.classes.ServicesAdapterClass
 import com.example.serviceu.classes.ServicesClass
+import com.example.serviceu.classes.SharedPreferenceClass
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class Services : AppCompatActivity(), RVClick {
@@ -22,20 +24,37 @@ class Services : AppCompatActivity(), RVClick {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_services)
+        val sharedPreferenceHelper = SharedPreferenceClass(this)
 
         selectedCategory = SelectedCategory("Null")
 
         bottomNav = findViewById(R.id.navmenu)
         bottomNav.setOnItemSelectedListener {
+
             when (it.itemId) {
                 R.id.home -> {
                     val intent = Intent(this, Services::class.java)
                     startActivity(intent)
                     finish() }
                 R.id.bookings -> {
-                    val intent = Intent(this, BookingsCustomer::class.java)
-                    startActivity(intent)
-                    finish()}
+                    val currentRole = sharedPreferenceHelper.getUserRole()
+                    try {
+                        if (currentRole == "Customer") {
+                            val intent = Intent(this, BookingsCustomer::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+                        if (currentRole == "Service Provider") {
+                            val intent = Intent(this, Profile::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+                    } catch (e: Exception) {
+                        Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()
+                        e.printStackTrace()
+                    }
+
+                }
                 R.id.profile -> {
                     val intent = Intent(this, Profile::class.java)
                     startActivity(intent)

@@ -35,12 +35,12 @@
                 tools:ignore="MissingConstraints" />
 
             <TextView
-                android:id="@+id/tv_service_booked"
+                android:id="@+id/tv_service_provider_name"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="24dp"
-                android:fontFamily="@font/fredokasemibold"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/fredokaregular"
                 android:text="@string/nameshow"
                 android:textColor="@color/eerieblack"
                 android:textSize="20sp"
@@ -49,10 +49,23 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tv_service_booked"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/fredokaregular"
+                android:text="@string/nameshow"
+                android:textColor="@color/eerieblack"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/img_bookings"
+                app:layout_constraintTop_toBottomOf="@+id/tv_service_provider_name" />
+
+            <TextView
                 android:id="@+id/tv_date"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_marginStart="28dp"
+                android:layout_marginStart="12dp"
                 android:fontFamily="@font/fredokaregular"
                 android:text="Jan 1, 2024"
                 android:textColor="@color/eerieblack"
@@ -67,8 +80,8 @@
                 android:id="@+id/tv_time"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_marginStart="28dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginBottom="4dp"
                 android:fontFamily="@font/fredokaregular"
                 android:text="00:00"
                 android:textColor="@color/eerieblack"

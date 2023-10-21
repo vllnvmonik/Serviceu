@@ -74,13 +74,15 @@ class Book : AppCompatActivity(),DatePickerDialog.OnDateSetListener, TimePickerD
 
                     val userId = sharedPreferenceHelper.getUserId()
                     Log.d("USERID", userId.toString())
-                    val field = arrayOf("userId", "providerName", "providerService", "bookingDate", "bookingTime")
+                    val status = "Pending"
+                    val field = arrayOf("userId", "providerName", "providerService", "bookingDate", "bookingTime", "status")
                     val data = arrayOf(
                         userId.toString(),
                         name.text.toString(),
                         service.text.toString(),
                         tv_dateDisplay.text.toString(),
-                        tv_timeDisplay.text.toString()
+                        tv_timeDisplay.text.toString(),
+                        status
                     )
 
                     val putData = PutData("https://serviceuapp.000webhostapp.com/bookings.php", "POST", field, data)
