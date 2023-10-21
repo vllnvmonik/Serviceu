@@ -45,7 +45,7 @@ class Services : AppCompatActivity(), RVClick {
                             finish()
                         }
                         if (currentRole == "Service Provider") {
-                            val intent = Intent(this, Profile::class.java)
+                            val intent = Intent(this, BookingsServiceProvider::class.java)
                             startActivity(intent)
                             finish()
                         }

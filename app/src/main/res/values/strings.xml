@@ -49,4 +49,6 @@
     <string name="service">Service</string>
     <string name="date">Date</string>
     <string name="time">Time</string>
+    <string name="decline">Decline</string>
+    <string name="accept">Accept</string>
 </resources>

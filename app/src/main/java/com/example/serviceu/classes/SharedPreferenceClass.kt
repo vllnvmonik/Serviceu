@@ -56,4 +56,13 @@ class SharedPreferenceClass (private val context: Context){
         return sharedPreferences.getInt("providerId", -1)
     }
 
+    fun saveUserFullName(userFullName:String?){
+        val editor = sharedPreferences.edit()
+        editor.putString("userFullName", userFullName)
+        editor.apply()
+    }
+    fun getUserFullName():String?{
+        return sharedPreferences.getString("userFullName", null)
+    }
+
 }

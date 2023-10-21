@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceu.R
 
 class ServiceProviderBookingsAdapter (
-    private val bookingsList: ArrayList<ServiceProviderBookingClass>
+    private val serviceBookingsList: ArrayList<ServiceProviderBookingClass>
 ): RecyclerView.Adapter<ServiceProviderBookingsAdapter.ViewHolderClass>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderClass {
@@ -18,31 +18,31 @@ class ServiceProviderBookingsAdapter (
     }
 
     override fun getItemCount(): Int {
-        return bookingsList.size
+        return serviceBookingsList.size
     }
 
     override fun onBindViewHolder(holder: ViewHolderClass, position: Int) {
-        val currentItem = bookingsList[position]
+        val currentItem = serviceBookingsList[position]
         holder.rvImageHolder.setImageResource(currentItem.bookingsImg)
-        holder.rvTitleHolder.text = currentItem.serviceTitle
+        holder.rvTitleHolder.text = currentItem.customerName
+        holder.rvServiceHolder.text = currentItem.bookedService
         holder.rvDateHolder.text = currentItem.date
         holder.rvTimeHolder.text = currentItem.time
-        // Uncomment and adapt if you have a status property:
-        // holder.rvStatusHolder.text = currentItem.status
+
     }
 
     class ViewHolderClass(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val rvImageHolder: ImageView = itemView.findViewById(R.id.img_bookings)
-        val rvTitleHolder: TextView = itemView.findViewById(R.id.tv_service_booked)
+        val rvTitleHolder: TextView = itemView.findViewById(R.id.tv_customer_name)
+        val rvServiceHolder: TextView = itemView.findViewById(R.id.tv_service_booked)
         val rvDateHolder: TextView = itemView.findViewById(R.id.tv_date)
         val rvTimeHolder: TextView = itemView.findViewById(R.id.tv_time)
-        // Uncomment and adapt if you have a status property:
-        // val rvStatusHolder: TextView = itemView.findViewById(R.id.booking_status)
+
     }
 
     fun setData(newData: List<ServiceProviderBookingClass>) {
-        bookingsList.clear()
-        bookingsList.addAll(newData)
+        serviceBookingsList.clear()
+        serviceBookingsList.addAll(newData)
         notifyDataSetChanged()
     }
 }

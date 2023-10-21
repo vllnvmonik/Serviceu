@@ -126,5 +126,57 @@ class FetchData {
             }
             return filteredData
         }
+        fun fetchAndDisplayServiceProviderBookingsData(
+            context: Context,
+            adapter: ServiceProviderBookingsAdapter?,
+            serviceBookingsList: ArrayList<ServiceProviderBookingClass>
+        ) {
+            val sharedPreferenceHelper = SharedPreferenceClass(context)
+            val providerId = sharedPreferenceHelper.getUserId()
+
+            val url = "https://serviceuapp.000webhostapp.com/fetchServiceBookingsData.php?providerId=$providerId"
+            Thread {
+                try {
+                    val urlConnection = URL(url).openConnection() as HttpURLConnection
+                    val reader = BufferedReader(InputStreamReader(urlConnection.inputStream))
+                    val response = StringBuilder()
+
+                    var line: String?
+                    while (reader.readLine().also { line = it } != null) {
+                        response.append(line)
+                    }
+
+                    (context as Activity).runOnUiThread {
+                        val filteredData = parseAndFilterServiceProviderBookingsData(response.toString())
+                        adapter?.setData(filteredData)
+                    }
+                    urlConnection.disconnect()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }.start()
+        }
+        private fun parseAndFilterServiceProviderBookingsData(response: String):
+                List<ServiceProviderBookingClass> {
+            val filteredData = ArrayList<ServiceProviderBookingClass>()
+
+            try {
+                val jsonArray = JSONArray(response)
+
+                for (i in 0 until jsonArray.length()) {
+                    val jsonObject = jsonArray.getJSONObject(i)
+                    val customerName = jsonObject.getString("customer_fullname")
+                    val bookedService = jsonObject.getString("bookedservice")
+                    val date = jsonObject.getString("date")
+                    val time = jsonObject.getString("time")
+
+                    val booking = ServiceProviderBookingClass(R.drawable.logo1, customerName, bookedService, date, time)
+                    filteredData.add(booking)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+            return filteredData
+        }
     }
 }

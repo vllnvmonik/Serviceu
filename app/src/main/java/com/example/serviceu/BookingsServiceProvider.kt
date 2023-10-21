@@ -6,16 +6,16 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.serviceu.classes.BookingsAdapterClass
-import com.example.serviceu.classes.BookingsClass
 import com.example.serviceu.classes.FetchData
+import com.example.serviceu.classes.ServiceProviderBookingClass
+import com.example.serviceu.classes.ServiceProviderBookingsAdapter
 
 class BookingsServiceProvider : AppCompatActivity() {
 
     private lateinit var backButton: ImageView
     private  var recyclerView: RecyclerView? = null
-    private var bookingsAdapter: BookingsAdapterClass? = null
-    private var bookingsList = ArrayList<BookingsClass>()
+    private var serviceBookingsAdapter: ServiceProviderBookingsAdapter? = null
+    private var serviceBookingsList = ArrayList<ServiceProviderBookingClass>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,11 +33,11 @@ class BookingsServiceProvider : AppCompatActivity() {
             finish()
         }
 
-        bookingsAdapter = BookingsAdapterClass(bookingsList)
+        serviceBookingsAdapter = ServiceProviderBookingsAdapter(serviceBookingsList)
 
-        recyclerView?.adapter = bookingsAdapter
+        recyclerView?.adapter = serviceBookingsAdapter
 
-        FetchData.fetchAndDisplayBookingsData(this, bookingsAdapter, bookingsList)
+        FetchData.fetchAndDisplayServiceProviderBookingsData(this, serviceBookingsAdapter, serviceBookingsList)
     }
 
 }

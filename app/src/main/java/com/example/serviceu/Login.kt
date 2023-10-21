@@ -120,7 +120,7 @@ class Login : AppCompatActivity() {
                         // parse the JSON response
                         val userInfo = JSONObject(response.toString())
 
-                        if (userInfo.has("user_id") && userInfo.has("role")) {
+                        if (userInfo.has("user_id") && userInfo.has("role") && userInfo.has("fullname")) {
                             // retrieve user ID
                             val userId = userInfo.getInt("user_id")
                             sharedPreferenceHelper.saveUserId(userId)
@@ -130,6 +130,9 @@ class Login : AppCompatActivity() {
                             sharedPreferenceHelper.saveUserRole(userRole)
                             Log.d("Profile", "User Role: $userRole")
 
+                            val userFullName = userInfo.getString("fullname")
+                            sharedPreferenceHelper.saveUserFullName(userFullName)
+                            Log.d("Profile", "User FullName: $userFullName")
 
                             withContext(Dispatchers.Main) {
                             }

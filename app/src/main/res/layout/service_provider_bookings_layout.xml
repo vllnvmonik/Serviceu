@@ -36,13 +36,13 @@
                 tools:ignore="MissingConstraints" />
 
             <TextView
-                android:id="@+id/tv_service_booked"
+                android:id="@+id/tv_customer_name"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/fredokasemibold"
-                android:text="ABCW SDASDA"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/fredokaregular"
+                android:text="@string/nameshow"
                 android:textColor="@color/eerieblack"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -50,58 +50,77 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_date"
+                android:id="@+id/tv_service_booked"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginStart="28dp"
-                android:fontFamily="@font/fredokasemibold"
-                android:text="Jan 1, 2024"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/fredokaregular"
+                android:text="@string/nameshow"
                 android:textColor="@color/eerieblack"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/tv_time"
                 app:layout_constraintStart_toEndOf="@+id/img_bookings"
-                app:layout_constraintTop_toBottomOf="@+id/tv_service_booked"
-                app:layout_constraintVertical_bias="0.314" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_customer_name" />
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/fredokaregular"
+                android:text="@string/date"
+                android:textColor="@color/eerieblack"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/img_bookings"
+                app:layout_constraintTop_toBottomOf="@+id/tv_service_booked" />
 
             <TextView
                 android:id="@+id/tv_time"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginStart="28dp"
-                android:layout_marginBottom="64dp"
-                android:fontFamily="@font/fredokasemibold"
-                android:text="00:00"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/fredokaregular"
+                android:text="@string/time"
                 android:textColor="@color/eerieblack"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/img_bookings" />
+                app:layout_constraintStart_toEndOf="@+id/img_bookings"
+                app:layout_constraintTop_toBottomOf="@+id/tv_date" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bt_decline"
                 android:layout_width="120dp"
-                android:layout_height="40dp"
-                android:text="Decline"
-                android:fontFamily="@font/fredokasemibold"
+                android:layout_height="48dp"
                 android:background="@drawable/roundstyle"
+                android:backgroundTint="@color/faintred"
+                android:fontFamily="@font/fredokasemibold"
+                android:text="@string/decline"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/bt_accept"
+                app:layout_constraintHorizontal_bias="0.538"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_time" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_time"
+                app:layout_constraintVertical_bias="0.541" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bt_accept"
                 android:layout_width="120dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="28dp"
-                android:fontFamily="@font/fredokasemibold"
+                android:layout_height="48dp"
+                android:layout_marginEnd="40dp"
                 android:background="@drawable/roundstyle"
-                android:text="Accept"
+                android:backgroundTint="@color/blue"
+                android:fontFamily="@font/fredokasemibold"
+                android:text="@string/accept"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_time"
-                app:layout_constraintVertical_bias="0.538" />
+                app:layout_constraintVertical_bias="0.541" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

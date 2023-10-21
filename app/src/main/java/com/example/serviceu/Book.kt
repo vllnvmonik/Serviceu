@@ -73,12 +73,14 @@ class Book : AppCompatActivity(),DatePickerDialog.OnDateSetListener, TimePickerD
                 CoroutineScope(Dispatchers.IO).launch {
                     val userId = sharedPreferenceHelper.getUserId()
                     val providerId = sharedPreferenceHelper.getProviderId()
+                    val userFullName = sharedPreferenceHelper.getUserFullName()
 
                     Log.d("USERID", userId.toString())
                     val status = "Pending"
-                    val field = arrayOf("userId","providerId", "providerName", "providerService", "bookingDate", "bookingTime", "status")
+                    val field = arrayOf("userId","userFullName","providerId", "providerName", "providerService", "bookingDate", "bookingTime", "status")
                     val data = arrayOf(
                         userId.toString(),
+                        userFullName.toString(),
                         providerId.toString(),
                         name.text.toString(),
                         service.text.toString(),
