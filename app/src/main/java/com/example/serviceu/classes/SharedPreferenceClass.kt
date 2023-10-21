@@ -47,4 +47,13 @@ class SharedPreferenceClass (private val context: Context){
         return sharedPreferences.getString("userRole", null)
     }
 
+    fun saveProviderId(providerId: Int){
+        val editor = sharedPreferences.edit()
+        editor.putInt("providerId", providerId)
+        editor.apply()
+    }
+    fun getProviderId(): Int{
+        return sharedPreferences.getInt("providerId", -1)
+    }
+
 }

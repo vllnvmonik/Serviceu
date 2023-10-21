@@ -23,7 +23,7 @@ class ServiceProviderProfile : AppCompatActivity() {
 
         selectedCategory = SelectedCategory(intent.getStringExtra("category") ?: "Null")
 
-        spProfileAdapter = ServiceProviderProfileAdapter(this, profileList)
+        spProfileAdapter = ServiceProviderProfileAdapter(this, this, profileList)
         recyclerView = findViewById(R.id.rvprofileList)
         recyclerView?.layoutManager = GridLayoutManager(this, 1)
         recyclerView?.adapter = spProfileAdapter

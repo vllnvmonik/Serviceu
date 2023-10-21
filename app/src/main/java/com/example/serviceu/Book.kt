@@ -71,13 +71,15 @@ class Book : AppCompatActivity(),DatePickerDialog.OnDateSetListener, TimePickerD
         proceedButton.setOnClickListener {
             if (dateTimeValidation()){
                 CoroutineScope(Dispatchers.IO).launch {
-
                     val userId = sharedPreferenceHelper.getUserId()
+                    val providerId = sharedPreferenceHelper.getProviderId()
+
                     Log.d("USERID", userId.toString())
                     val status = "Pending"
-                    val field = arrayOf("userId", "providerName", "providerService", "bookingDate", "bookingTime", "status")
+                    val field = arrayOf("userId","providerId", "providerName", "providerService", "bookingDate", "bookingTime", "status")
                     val data = arrayOf(
                         userId.toString(),
+                        providerId.toString(),
                         name.text.toString(),
                         service.text.toString(),
                         tv_dateDisplay.text.toString(),

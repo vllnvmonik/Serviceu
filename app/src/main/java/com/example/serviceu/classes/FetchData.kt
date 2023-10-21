@@ -43,10 +43,12 @@ class FetchData {
             }.start()
         }
 
+
+
         private fun parseAndFilterData(
             response: String,
             profileList: ArrayList<ServiceProviderProfileHolder>,
-            selectedCategory: String
+            selectedCategory: String,
         ): List<ServiceProviderProfileHolder> {
             val filteredData = ArrayList<ServiceProviderProfileHolder>()
             try {
@@ -57,9 +59,10 @@ class FetchData {
                     val name = jsonObject.getString("fullname")
                     val category = jsonObject.getString("category")
                     val contact = jsonObject.getString("phone")
+                    val userId = jsonObject.getInt("user_id")
 
                     if (category == selectedCategory) {
-                        val profile = ServiceProviderProfileHolder(name, category, contact)
+                        val profile = ServiceProviderProfileHolder(name, category, contact, userId)
                         filteredData.add(profile)
                     }
                 }
@@ -100,7 +103,8 @@ class FetchData {
             }.start()
         }
 
-        private fun parseAndFilterBookingsData(response: String): List<BookingsClass> {
+        private fun parseAndFilterBookingsData(response: String):
+                List<BookingsClass> {
             val filteredData = ArrayList<BookingsClass>()
 
             try {
