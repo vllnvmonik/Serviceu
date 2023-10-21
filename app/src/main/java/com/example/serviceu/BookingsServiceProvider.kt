@@ -1,11 +1,43 @@
 package com.example.serviceu
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.serviceu.classes.BookingsAdapterClass
+import com.example.serviceu.classes.BookingsClass
+import com.example.serviceu.classes.FetchData
 
 class BookingsServiceProvider : AppCompatActivity() {
+
+    private lateinit var backButton: ImageView
+    private  var recyclerView: RecyclerView? = null
+    private var bookingsAdapter: BookingsAdapterClass? = null
+    private var bookingsList = ArrayList<BookingsClass>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bookings_service_provider)
+
+        recyclerView = findViewById(R.id.rv_spbookings)
+        recyclerView?.layoutManager = LinearLayoutManager(this)
+        recyclerView?.setHasFixedSize(true)
+
+        backButton = findViewById(R.id.back_button)
+
+        backButton.setOnClickListener {
+            val intent = Intent(this, Services::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        bookingsAdapter = BookingsAdapterClass(bookingsList)
+
+        recyclerView?.adapter = bookingsAdapter
+
+        FetchData.fetchAndDisplayBookingsData(this, bookingsAdapter, bookingsList)
     }
+
 }

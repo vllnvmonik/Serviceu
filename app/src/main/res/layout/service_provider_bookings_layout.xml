@@ -3,29 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="120dp">
+    android:layout_height="210dp">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="400dp"
+        android:layout_width="380dp"
         android:id="@+id/cardview"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_height="180dp"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
-        android:backgroundTint="@color/white"
+        app:cardElevation="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+            android:layout_width="372dp"
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/img_profilepic"
+                android:id="@+id/img_bookings"
                 android:layout_width="110dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="16dp"
@@ -33,61 +32,78 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.2"
                 tools:ignore="MissingConstraints" />
 
             <TextView
-                android:id="@+id/tv_spname"
+                android:id="@+id/tv_service_booked"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_marginStart="28dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/fredokasemibold"
-                android:text="@string/nameshow"
+                android:text="ABCW SDASDA"
                 android:textColor="@color/eerieblack"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/img_profilepic"
+                app:layout_constraintStart_toEndOf="@+id/img_bookings"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_sp_category"
+                android:id="@+id/tv_date"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginStart="28dp"
-                android:fontFamily="@font/fredokaregular"
-                android:text="@string/service_provider"
+                android:fontFamily="@font/fredokasemibold"
+                android:text="Jan 1, 2024"
                 android:textColor="@color/eerieblack"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/tv_sp_number"
-                app:layout_constraintStart_toEndOf="@+id/img_profilepic"
-                app:layout_constraintTop_toBottomOf="@+id/tv_spname" />
+                app:layout_constraintBottom_toTopOf="@+id/tv_time"
+                app:layout_constraintStart_toEndOf="@+id/img_bookings"
+                app:layout_constraintTop_toBottomOf="@+id/tv_service_booked"
+                app:layout_constraintVertical_bias="0.314" />
 
             <TextView
-                android:id="@+id/tv_sp_number"
+                android:id="@+id/tv_time"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginStart="28dp"
-                android:layout_marginBottom="1dp"
-                android:fontFamily="@font/fredokaregular"
-                android:text="@string/phone_number"
+                android:layout_marginBottom="64dp"
+                android:fontFamily="@font/fredokasemibold"
+                android:text="00:00"
                 android:textColor="@color/eerieblack"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/img_profilepic" />
+                app:layout_constraintStart_toEndOf="@+id/img_bookings" />
 
-            <TextView
-                android:id="@+id/tv_provider_id_container"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:visibility="gone"
+            <Button
+                android:id="@+id/bt_decline"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:text="Decline"
+                android:fontFamily="@font/fredokasemibold"
+                android:background="@drawable/roundstyle"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintEnd_toStartOf="@+id/bt_accept"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_time" />
 
-            </TextView>
+            <Button
+                android:id="@+id/bt_accept"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="28dp"
+                android:fontFamily="@font/fredokasemibold"
+                android:background="@drawable/roundstyle"
+                android:text="Accept"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_time"
+                app:layout_constraintVertical_bias="0.538" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
