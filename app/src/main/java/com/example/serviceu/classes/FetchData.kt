@@ -74,7 +74,10 @@ class FetchData {
             adapter: BookingsAdapterClass?,
             bookingsList: ArrayList<BookingsClass>
         ) {
-            val url = "https://serviceuapp.000webhostapp.com/fetchBookingsData.php"
+            val sharedPreferenceHelper = SharedPreferenceClass(context)
+            val userId = sharedPreferenceHelper.getUserId()
+
+            val url = "https://serviceuapp.000webhostapp.com/fetchBookingsData.php?userId=$userId"
             Thread {
                 try {
                     val urlConnection = URL(url).openConnection() as HttpURLConnection
