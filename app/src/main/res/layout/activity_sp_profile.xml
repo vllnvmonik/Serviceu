@@ -11,7 +11,8 @@
         android:id="@+id/back_button"
         android:layout_width="70dp"
         android:layout_height="40dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
         android:contentDescription="@string/todo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,9 +20,9 @@
 
     <TextView
         android:id="@+id/tv_serviceproviders"
-        android:layout_width="282dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/fredokasemibold"
         android:gravity="center_vertical"
         android:text="@string/service_providers"
@@ -29,7 +30,7 @@
         android:textColor="@color/eerieblack"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="RtlCompat">
@@ -39,10 +40,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvprofileList"
         android:layout_width="409dp"
-        android:layout_height="710dp"
+        android:layout_height="740dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_serviceproviders" />
+        app:layout_constraintTop_toBottomOf="@id/tv_serviceproviders"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

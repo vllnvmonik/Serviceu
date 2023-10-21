@@ -6,15 +6,14 @@
     android:layout_height="120dp">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="400dp"
+        android:layout_width="390dp"
         android:id="@+id/cardview"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginHorizontal="10dp"
         android:layout_marginBottom="10dp"
         app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
-        android:backgroundTint="@color/white"
+        app:cardElevation="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,20 +25,21 @@
 
             <ImageView
                 android:id="@+id/img_profilepic"
-                android:layout_width="110dp"
-                android:layout_height="100dp"
+                android:layout_width="107dp"
+                android:layout_height="88dp"
                 android:layout_marginStart="16dp"
                 android:src="@drawable/logo1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.476"
                 tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/tv_spname"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
-                android:layout_marginStart="28dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/fredokasemibold"
                 android:text="@string/nameshow"
@@ -53,7 +53,7 @@
                 android:id="@+id/tv_sp_category"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_marginStart="28dp"
+                android:layout_marginStart="16dp"
                 android:fontFamily="@font/fredokaregular"
                 android:text="@string/service_provider"
                 android:textColor="@color/eerieblack"
@@ -61,13 +61,14 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/tv_sp_number"
                 app:layout_constraintStart_toEndOf="@+id/img_profilepic"
-                app:layout_constraintTop_toBottomOf="@+id/tv_spname" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_spname"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/tv_sp_number"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_marginStart="28dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginBottom="1dp"
                 android:fontFamily="@font/fredokaregular"
                 android:text="@string/phone_number"
