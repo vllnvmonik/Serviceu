@@ -90,6 +90,7 @@ class Profile : AppCompatActivity() {
                 // make false when logged out
                 sharedPreferenceHelper.saveLoginStatus(false)
                 sharedPreferenceHelper.saveSessionToken(null)
+                sharedPreferenceHelper.clearUserRole()
                 Toast.makeText(this,"Logged out", Toast.LENGTH_LONG).show()
                 val intent = Intent(this, LoginSignUp::class.java)
                 this.startActivity(intent)

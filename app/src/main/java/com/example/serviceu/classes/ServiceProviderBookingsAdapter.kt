@@ -45,22 +45,21 @@ class ServiceProviderBookingsAdapter (
         holder.acceptButton.tag = position
 
         holder.declineButton.setOnClickListener {
-            updateBookingStatus(position, "Rejected")
+            updateBookingStatus(position, "Rejected", this)
             Log.d("Decline Button", "clicked $position")
 
         }
         holder.acceptButton.setOnClickListener {
-            updateBookingStatus(position, "Accepted")
+            updateBookingStatus(position, "Accepted", this)
             Log.d("Accept Button", "clicked $position")
         }
     }
-    private fun updateBookingStatus(position: Int, status: String) {
+    private fun updateBookingStatus(position: Int, status: String, adapter: ServiceProviderBookingsAdapter) {
         val currentItem = serviceBookingsList[position]
         val bookId = currentItem.bookId
         CoroutineScope(Dispatchers.IO).launch {
             val sharedPreferenceHelper = SharedPreferenceClass(context)
 
-            // Change the status to newStatus
             val field = arrayOf("bookId", "status")
             val data = arrayOf(
                 bookId.toString(),

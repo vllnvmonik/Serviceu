@@ -14,7 +14,7 @@ class BookingsServiceProvider : AppCompatActivity() {
 
     private lateinit var backButton: ImageView
     private  var recyclerView: RecyclerView? = null
-    private var serviceBookingsAdapter: ServiceProviderBookingsAdapter? = null
+    private lateinit var serviceBookingsAdapter: ServiceProviderBookingsAdapter
     private var serviceBookingsList = ArrayList<ServiceProviderBookingClass>()
 
     override fun onCreate(savedInstanceState: Bundle?) {

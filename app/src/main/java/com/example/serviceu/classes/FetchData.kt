@@ -129,7 +129,7 @@ class FetchData {
         }
         fun fetchAndDisplayServiceProviderBookingsData(
             context: Context,
-            adapter: ServiceProviderBookingsAdapter?,
+            adapter: ServiceProviderBookingsAdapter,
             serviceBookingsList: ArrayList<ServiceProviderBookingClass>
         ) {
             val sharedPreferenceHelper = SharedPreferenceClass(context)
@@ -149,7 +149,7 @@ class FetchData {
 
                     (context as Activity).runOnUiThread {
                         val filteredData = parseAndFilterServiceProviderBookingsData(response.toString())
-                        adapter?.setData(filteredData)
+                        adapter.setData(filteredData)
                     }
                     urlConnection.disconnect()
                 } catch (e: Exception) {

@@ -46,6 +46,11 @@ class SharedPreferenceClass (private val context: Context){
     fun getUserRole():String?{
         return sharedPreferences.getString("userRole", null)
     }
+    fun clearUserRole(){
+        val editor = sharedPreferences.edit()
+        editor.remove("userRole")
+        editor.apply()
+    }
 
     fun saveProviderId(providerId: Int){
         val editor = sharedPreferences.edit()
