@@ -94,7 +94,7 @@ class Login : AppCompatActivity() {
                                         finish()
                                     }
                                     else -> {
-                                        Toast.makeText(this, "No role", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(this, "Click Login", Toast.LENGTH_SHORT).show()
                                     }
                                 }
                             } else {
