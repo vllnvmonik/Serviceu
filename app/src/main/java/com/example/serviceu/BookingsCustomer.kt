@@ -13,8 +13,8 @@ import com.example.serviceu.classes.FetchData
 class BookingsCustomer : AppCompatActivity() {
 
     private lateinit var backButton: ImageView
-    private  var recyclerView: RecyclerView? = null
-    private var bookingsAdapter: BookingsAdapterClass? = null
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var bookingsAdapter: BookingsAdapterClass
     private var bookingsList = ArrayList<BookingsClass>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,8 +22,8 @@ class BookingsCustomer : AppCompatActivity() {
         setContentView(R.layout.activity_bookings_customer)
 
         recyclerView = findViewById(R.id.rv_bookings)
-        recyclerView?.layoutManager = LinearLayoutManager(this)
-        recyclerView?.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.setHasFixedSize(true)
 
         backButton = findViewById(R.id.back_button)
 
@@ -35,7 +35,7 @@ class BookingsCustomer : AppCompatActivity() {
 
         bookingsAdapter = BookingsAdapterClass(bookingsList)
 
-        recyclerView?.adapter = bookingsAdapter
+        recyclerView.adapter = bookingsAdapter
 
         FetchData.fetchAndDisplayBookingsData(this, bookingsAdapter, bookingsList)
     }

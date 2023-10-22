@@ -13,7 +13,7 @@ import com.example.serviceu.classes.ServiceProviderBookingsAdapter
 class BookingsServiceProvider : AppCompatActivity() {
 
     private lateinit var backButton: ImageView
-    private  var recyclerView: RecyclerView? = null
+    private lateinit var recyclerView: RecyclerView
     private lateinit var serviceBookingsAdapter: ServiceProviderBookingsAdapter
     private var serviceBookingsList = ArrayList<ServiceProviderBookingClass>()
 
@@ -22,8 +22,8 @@ class BookingsServiceProvider : AppCompatActivity() {
         setContentView(R.layout.activity_bookings_service_provider)
 
         recyclerView = findViewById(R.id.rv_spbookings)
-        recyclerView?.layoutManager = LinearLayoutManager(this)
-        recyclerView?.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.setHasFixedSize(true)
 
         backButton = findViewById(R.id.back_button)
 
@@ -35,7 +35,7 @@ class BookingsServiceProvider : AppCompatActivity() {
 
         serviceBookingsAdapter = ServiceProviderBookingsAdapter(this, serviceBookingsList)
 
-        recyclerView?.adapter = serviceBookingsAdapter
+        recyclerView.adapter = serviceBookingsAdapter
 
         FetchData.fetchAndDisplayServiceProviderBookingsData(this, serviceBookingsAdapter, serviceBookingsList)
     }

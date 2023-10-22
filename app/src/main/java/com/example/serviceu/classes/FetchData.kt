@@ -127,6 +127,8 @@ class FetchData {
             }
             return filteredData
         }
+
+        // this will only fetch the serviceprovider bookings based on the sp_id and if the status is pending
         fun fetchAndDisplayServiceProviderBookingsData(
             context: Context,
             adapter: ServiceProviderBookingsAdapter,
@@ -134,8 +136,9 @@ class FetchData {
         ) {
             val sharedPreferenceHelper = SharedPreferenceClass(context)
             val providerId = sharedPreferenceHelper.getUserId()
+            val status = "Pending"
 
-            val url = "https://serviceuapp.000webhostapp.com/fetchServiceBookingsData.php?providerId=$providerId"
+            val url = "https://serviceuapp.000webhostapp.com/fetchServiceBookingsData.php?providerId=$providerId&status=$status"
             Thread {
                 try {
                     val urlConnection = URL(url).openConnection() as HttpURLConnection
