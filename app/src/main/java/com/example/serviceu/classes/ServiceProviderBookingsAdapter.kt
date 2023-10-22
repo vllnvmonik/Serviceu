@@ -19,9 +19,8 @@ import kotlinx.coroutines.withContext
 
 class ServiceProviderBookingsAdapter (
     private val context: Context,
-    private val serviceBookingsList: ArrayList<ServiceProviderBookingClass>
+    private val serviceBookingsList: ArrayList<ServiceProviderBookingClass>,
 ): RecyclerView.Adapter<ServiceProviderBookingsAdapter.ViewHolderClass>() {
-    val sharedPreferenceHelper = SharedPreferenceClass(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderClass {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.service_provider_bookings_layout, parent, false)
@@ -45,16 +44,16 @@ class ServiceProviderBookingsAdapter (
         holder.acceptButton.tag = position
 
         holder.declineButton.setOnClickListener {
-            updateBookingStatus(position, "Rejected", this)
+            updateBookingStatus(position, "Rejected")
             Log.d("Decline Button", "clicked $position")
 
         }
         holder.acceptButton.setOnClickListener {
-            updateBookingStatus(position, "Accepted", this)
+            updateBookingStatus(position, "Accepted")
             Log.d("Accept Button", "clicked $position")
         }
     }
-    private fun updateBookingStatus(position: Int, status: String, adapter: ServiceProviderBookingsAdapter) {
+    private fun updateBookingStatus(position: Int, status: String) {
         val currentItem = serviceBookingsList[position]
         val bookId = currentItem.bookId
         CoroutineScope(Dispatchers.IO).launch {
@@ -105,4 +104,5 @@ class ServiceProviderBookingsAdapter (
         serviceBookingsList.addAll(newData)
         notifyDataSetChanged()
     }
+
 }

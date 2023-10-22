@@ -21,6 +21,7 @@ class BookingsServiceProvider : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bookings_service_provider)
 
+
         recyclerView = findViewById(R.id.rv_spbookings)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
